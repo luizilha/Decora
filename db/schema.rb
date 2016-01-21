@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120043127) do
+ActiveRecord::Schema.define(version: 20160121180144) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -28,7 +31,17 @@ ActiveRecord::Schema.define(version: 20160120043127) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
-  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
+  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+
+  create_table "categoria", primary_key: "id_categoria", force: true do |t|
+    t.string   "nome",              limit: 80,                                                         null: false
+    t.text     "descricao",                                                                            null: false
+    t.integer  "id_admin",                     default: "nextval('categoria_id_admin_seq'::regclass)", null: false
+    t.string   "capa_file_name"
+    t.string   "capa_content_type"
+    t.integer  "capa_file_size"
+    t.datetime "capa_updated_at"
+  end
 
 end

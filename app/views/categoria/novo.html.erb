@@ -1,0 +1,26 @@
+
+  <div class="row">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Nova Categoria</h3>
+        </div>
+        <div class="panel-body">
+         <%= form_for @categoria, :html => {multipart: true} ,:url => {:action => :cria} do |n| %>
+         <ul class="media-list">
+
+            <%= n.file_field :capa %>
+            <h2 class="form-signin-heading">Nome Categoria</h2>
+            <%= n.text_field :nome, class: "form-control" %>
+            <h2 class="form-signin-heading">Descrição</h2>
+            <%= n.text_area :descricao, rows: 3, class: "form-control" %>
+
+            <%= n.submit "Salvar", class: "btn btn-primary btn-block" %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

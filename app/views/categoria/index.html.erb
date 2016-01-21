@@ -1,3 +1,46 @@
-<div class="container">
-  <h3>NOSSA!!</h3>
+
+<div class="row">
+  <div class="container">
+    <div class="col-md-10">
+    </div>
+    <a href="categorias/novo" class="btn btn-primary">Adicionar Categoria</a>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="panel panel-default" style="margin-top: 20px">
+    <div class="panel-heading">
+      <h3 class="panel-title">Categorias</h3>
+    </div>
+    <div class="panel-body">
+      <ul class="media-list">
+
+        <% @categorias.each do |c| %>
+        <li class="media">
+
+          <div class="media-left">
+            <%= image_tag c.capa.url(:thumb) %>
+          </div>
+          <div class="media-body">
+            <div class="col-md-6">
+              <h4 class="media-heading">Nome</h4>
+              <%= c.nome %>
+              <h4 class="media-heading">Descrição</h4>
+              <%= c.descricao %>              
+            </div>
+            <!-- Botoes deletar, editar e excluir -->
+            <div class="btn-group" role="group" aria-label="...">
+              <%= link_to content_tag(:span, nil, class: 'glyphicon glyphicon-trash'), { controller: 'categoria', action: 'index' }, class: 'btn btn-danger btn-default'%>
+              <%= link_to content_tag(:span, nil, class: 'glyphicon glyphicon-pencil'), { controller: 'categoria', action: 'index' }, class: 'btn btn-warning btn-default' %>
+              <%= link_to content_tag(:span, nil, class: 'glyphicon glyphicon-th-list'), { controller: 'categoria', action: 'index' }, {class: 'btn btn-info btn-default'} %>
+            </a>
+          </div>
+        </div>
+      </li>
+      <% end %>
+
+    </div>
+  </div>
+
 </div>
