@@ -1,4 +1,3 @@
-
   <div class="row">
     <div class="col-md-3"></div>
 
@@ -8,9 +7,9 @@
           <h3 class="panel-title">Edita Categoria</h3>
         </div>
         <div class="panel-body">
-         <%= form_for @categoria, :html => {multipart: true} ,:url => {:action => :cria} do |n| %>
+         <%= form_for @categoria, :html => {multipart: true} ,:url => {:action => :altera}, method: :PUT do |n| %>
          <ul class="media-list">
-
+           <%= image_tag @categoria.capa.url(:thumb) %>      
             <%= n.file_field :capa %>
             <h2 class="form-signin-heading">Nome Categoria</h2>
             <%= n.text_field :nome, class: "form-control" %>

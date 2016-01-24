@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   match 'categoria/novo' => 'categoria#novo', via: 'get'
   match '/' => 'categoria#cria', via: 'post'
   match 'categoria/deleta/:id' => 'categoria#deleta', via: 'get'
-
   match 'categoria/edita/:id' => 'categoria#edita', via: 'get'
   match 'categoria/edita/:id' => 'categoria#altera', via: 'put'
 end
