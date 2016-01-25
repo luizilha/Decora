@@ -28,8 +28,9 @@
               <h4 class="media-heading">Descrição</h4>
               <%= c.descricao %>
             </div>
+            <%= c.id_categoria %>
             <div class="btn-group" role="group" aria-label="...">
-              <%= link_to 'Deletar', { controller: 'categoria', action: 'deleta', id: c}, {class: 'btn btn-danger btn-default'} %>
+              <%= link_to 'Deletar', { controller: 'categoria', action: 'deleta', id: c.id_categoria}, {class: 'btn btn-danger btn-default'} %>
             </div>
           </div>
         </li>
