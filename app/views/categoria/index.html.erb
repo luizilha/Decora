@@ -4,7 +4,6 @@
     <div class="col-md-10">
     </div>
     <%= link_to 'Adicionar Categoria', { controller: 'categoria', action: 'novo'}, class: 'btn btn-primary btn-default'%>
-    
   </div>
 </div>
 
@@ -32,15 +31,15 @@
             </div>
             <!-- Botoes deletar, editar e excluir -->
             <div class="btn-group" role="group" aria-label="...">
-              <%= link_to content_tag(:span, nil, class: 'glyphicon glyphicon-trash'), { controller: 'categoria', action: 'deleta', id: c }, class: 'btn btn-danger btn-default'%>
-              <%= link_to content_tag(:span, nil, class: 'glyphicon glyphicon-pencil'), { controller: 'categoria', action: 'edita', id: c }, class: 'btn btn-warning btn-default' %>
-              <%= link_to content_tag(:span, nil, class: 'glyphicon glyphicon-th-list'), { controller: 'categoria', action: 'index' }, {class: 'btn btn-info btn-default'} %>
+              <%= link_to 'Deletar', { controller: 'categoria', action: 'deleta', id: c }, class: 'btn btn-danger btn-default'%>
+              <%= link_to 'Editar', { controller: 'categoria', action: 'edita', id: c }, class: 'btn btn-warning btn-default' %>
+              <%= link_to 'Listar', { controller: 'categoria', action: 'index' }, class: 'btn btn-success btn-default' %>
             </div>
           </div>
         </li>
         <% end %>
       </ul>
-      </div>
     </div>
-
   </div>
+
+</div>

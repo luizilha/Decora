@@ -9,13 +9,12 @@
         <div class="panel-body">
          <%= form_for @categoria, :html => {multipart: true} ,:url => {:action => :altera}, method: :PUT do |n| %>
          <ul class="media-list">
-           <%= image_tag @categoria.capa.url(:thumb) %>      
+           <%= image_tag @categoria.capa.url(:thumb) %>
             <%= n.file_field :capa %>
             <h2 class="form-signin-heading">Nome Categoria</h2>
             <%= n.text_field :nome, class: "form-control" %>
             <h2 class="form-signin-heading">Descrição</h2>
             <%= n.text_area :descricao, rows: 3, class: "form-control" %>
-
             <%= n.submit "Salvar", class: "btn btn-primary btn-block" %>
           </ul>
         <% end %>
