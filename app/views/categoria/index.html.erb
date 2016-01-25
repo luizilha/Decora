@@ -18,7 +18,6 @@
 
         <% @categorias.each do |c| %>
         <li class="media">
-
           <div class="media-left">
             <%= image_tag c.capa.url(:thumb) %>
           </div>
@@ -29,11 +28,7 @@
               <h4 class="media-heading">Descrição</h4>
               <%= c.descricao %>
             </div>
-            <!-- Botoes deletar, editar e excluir -->
             <div class="btn-group" role="group" aria-label="...">
-              <%= link_to 'Deletar', { controller: 'categoria', action: 'deleta', id: c }, class: 'btn btn-danger btn-default'%>
-              <%= link_to 'Editar', { controller: 'categoria', action: 'edita', id: c }, class: 'btn btn-warning btn-default' %>
-              <%= link_to 'Listar', { controller: 'categoria', action: 'index' }, class: 'btn btn-success btn-default' %>
             </div>
           </div>
         </li>
