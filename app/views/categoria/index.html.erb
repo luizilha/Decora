@@ -31,6 +31,7 @@
             <%= c.id_categoria %>
             <div class="btn-group" role="group" aria-label="...">
               <%= link_to 'Deletar', { controller: 'categoria', action: 'deleta', id: c.id_categoria}, {class: 'btn btn-danger btn-default'} %>
+              <%= link_to 'Editar', { controller: 'categoria', action: 'edita', id: c.id_categoria }, {class: 'btn btn-warning btn-default'} %>
             </div>
           </div>
         </li>
