@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Novo item da Categoria </h3>
+        </div>
+        <div class="panel-body">
+         <%= form_for @item, :html => {multipart: true, method: :POST} ,:url => {:action => :cria} do |n| %>
+         <ul class="media-list">
+            <h2 class="form-signin-heading">Nome Item</h2>
+            <%= n.text_field :nome, class: "form-control" %>
+            <h2 class="form-signin-heading">Descrição</h2>
+            <%= n.text_area :descricao, rows: 3, class: "form-control" %>
+            <h2 class="form-signin-heading">Preço</h2>
+            <%= n.text_field :preco, class: "form-control" %>
+            <h2 class="form-signin-heading">Preço de reposição</h2>
+            <%= n.text_field :preco_reposicao, class: "form-control" %>
+            <%= n.submit "Salvar", class: "btn btn-primary btn-block" %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
