@@ -9,7 +9,7 @@ class CategoriaController < ApplicationController
   end
 
   def cria
-    @categoria = Categoria.new parametros_categoria
+    @categoria = Categoria.new params_categoria
     @categoria.id_admin = current_admin.id
     @categoria.save
     redirect_to action: 'index'
@@ -21,7 +21,7 @@ class CategoriaController < ApplicationController
 
   def altera
     @categoria = Categoria.find(params[:id])
-    @categoria.update_attributes parametros_categoria
+    @categoria.update_attributes params_categoria
     redirect_to action: 'index'
   end
 
@@ -31,7 +31,7 @@ class CategoriaController < ApplicationController
     redirect_to action: 'index'
   end
 
-  def parametros_categoria
+  def params_categoria
     params.require(:categoria).permit(:nome, :descricao, :capa)
   end
 end
