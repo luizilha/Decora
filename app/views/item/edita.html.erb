@@ -4,12 +4,11 @@
     <div class="col-md-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Novo item da Categoria </h3>
+          <h3 class="panel-title">Edita item da Categoria </h3>
         </div>
         <div class="panel-body">
-         <%= form_for @item, :html => {multipart: true, method: :POST} ,:url => {:action => :cria} do |n| %>
-         <ul class="media-list">
-           <%= n.hidden_field :id_categoria, value: params[:id] %>
+         <%= form_for @item, :html => {multipart: true, method: :PUT} ,:url => {:action => :altera} do |n| %>
+         <ul class="media-list">           
             <h2 class="form-signin-heading">Nome Item</h2>
             <%= n.text_field :nome, class: "form-control" %>
             <h2 class="form-signin-heading">Descrição</h2>
