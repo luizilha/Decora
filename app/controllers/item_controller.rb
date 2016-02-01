@@ -20,7 +20,7 @@ class ItemController < ApplicationController
 	def altera
 		@item = Item.find(params[:id])
 		@item.update_attributes params_item
-		redirect_to action: 'listaDaCategoria'
+		redirect_to action: 'listaDaCategoria', id: @item.id_categoria
 	end
 
 	def deleta
@@ -29,17 +29,7 @@ class ItemController < ApplicationController
 		redirect_to action: 'listaDaCategoria', id: params[:id_categoria]
 	end
 
-	def edita
-    @item = Item.find(params[:id])
-  end
-
-  def altera
-    @item = Item.find(params[:id])
-    @item.update_attributes params_item
-    redirect_to action: 'listaDaCategoria', id: 33
-  end
-
 	def params_item
-		params.require(:item).permit(:nome, :descricao, :preco, :preco_reposicao, :id_categoria)
+		params.require(:item).permit(:nome, :descricao, :preco, :preco_reposicao, :id_categoria, :foto)
 	end
 end

@@ -1,5 +1,6 @@
 class CategoriaController < ApplicationController
   before_action :authenticate_admin!
+  
   def index
     @categorias = Categoria.all
   end

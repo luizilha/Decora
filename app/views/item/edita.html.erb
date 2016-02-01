@@ -8,7 +8,9 @@
         </div>
         <div class="panel-body">
          <%= form_for @item, :html => {multipart: true, method: :PUT} ,:url => {:action => :altera} do |n| %>
-         <ul class="media-list">           
+         <ul class="media-list">
+           <%= image_tag @item.foto.url(:medium), class: 'center-block'%>
+            <%= n.file_field :foto %>
             <h2 class="form-signin-heading">Nome Item</h2>
             <%= n.text_field :nome, class: "form-control" %>
             <h2 class="form-signin-heading">Descrição</h2>
