@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160201031222) do
+ActiveRecord::Schema.define(version: 20160212030754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 20160201031222) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "categoria", primary_key: "id_categoria", force: true do |t|
-    t.string   "nome",              limit: 80,                                                         null: false
-    t.text     "descricao",                                                                            null: false
-    t.integer  "id_admin",                     default: "nextval('categoria_id_admin_seq'::regclass)", null: false
+    t.string   "nome",              limit: 80, null: false
+    t.text     "descricao",                    null: false
+    t.integer  "id_admin",                     null: false
     t.string   "capa_file_name"
     t.string   "capa_content_type"
     t.integer  "capa_file_size"
