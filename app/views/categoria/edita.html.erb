@@ -3,8 +3,14 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cátalogo <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/">categoria</a></li>
+              <li><%= link_to 'itens', { controller: 'item', action: 'lista'}%></li>
+            </ul>
+          </li>
           <%= link_to('Sair', destroy_usuario_session_path, :method => :delete, class: 'btn btn-default navbar-btn') %>
-          <li><a href="/">Catálogo</a></li>
           <li><a href="">Orçamento</a></li>
           <li><a href="">Agendamento</a></li>
           <li><a href="">Projetos</a></li>
@@ -26,8 +32,21 @@
         <div class="panel-body">
          <%= form_for @categoria, :html => {multipart: true, method: :PUT} ,:url => {:action => :altera} do |n| %>
          <ul class="media-list">
-           <%= image_tag @categoria.capa.url(:thumb) %>
-            <%= n.file_field :capa %>
+
+
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+              <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                <img data-src="holder.js/100%x100%" src="<%= @categoria.capa.url(:medium) %>">
+              </div>
+              <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+              <div>
+                <span class="btn btn-default btn-file"><span class="fileinput-new">Selecione um Imagem</span><span class="fileinput-exists">Mudar</span><%= n.file_field :capa %></span>
+                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+              </div>
+            </div>
+
+
+
             <h2 class="form-signin-heading">Nome Categoria</h2>
             <%= n.text_field :nome, class: "form-control" %>
             <h2 class="form-signin-heading">Descrição</h2>

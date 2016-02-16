@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   match 'categoria/edita/:id' => 'categoria#edita', via: 'get'
   match 'categoria/edita/:id' => 'categoria#altera', via: 'put'
 
+  match 'itens' => 'item#lista', via: 'get'
   match 'itens/:id' => 'item#listaDaCategoria', via: 'get'
   match 'item/novo/:id' => 'item#novo', via: 'get'
   match 'itens/:id' => 'item#cria', via: 'post', path: 'cria'

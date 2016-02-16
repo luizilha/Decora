@@ -10,7 +10,7 @@
               <li><%= link_to 'itens', { controller: 'item', action: 'lista'}%></li>
             </ul>
           </li>
-          <%= link_to('Sair', destroy_usuario_session_path, :method => :delete, class: 'btn btn-default navbar-btn') %>      
+          <%= link_to('Sair', destroy_usuario_session_path, :method => :delete, class: 'btn btn-default navbar-btn') %>
           <li><a href="">Orçamento</a></li>
           <li><a href="">Agendamento</a></li>
           <li><a href="">Projetos</a></li>
@@ -25,31 +25,26 @@
   <div class="container">
     <div class="col-md-10">
     </div>
-    <%= link_to 'Adicionar Item', { controller: 'item', action: 'novo', id: params[:id]}, class: 'btn btn-primary btn-default'%>
+
   </div>
 </div>
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Itens da Categoria</h3>
+      <h3 class="panel-title">Itens da Arcevo</h3>
     </div>
     <div class="panel-body">
       <ul class="media-list">
 
         <div class="row">
           <% @itens.each do |i| %>
-          <div class="col-md-2"></div>
+          <div class="col-md-1"></div>
           <div class="col-md-4">
             <div class="thumbnail">
-              <%= image_tag i.foto.url(:medium), class: 'center-block'%>
+              <%= image_tag i.foto.url(:original), class: 'center-block'%>
               <div class="caption">
                 <h3><%= i.nome %></h3>
                 <p><%= i.descricao %></p>
-                <b>Preço</b>
-                <h4>R$ <%= i.preco %></h4>
-                <b>Preço Reposição</b>
-                <h4>R$ <%= i.preco_reposicao %></h4>
-
                 <%= link_to 'Editar', { controller: 'item', action: 'edita', id: i.id_item}, {class: 'btn btn-default'} %>
                 <%= link_to 'Deletar', { controller: 'item', action: 'deleta', id: i.id_item, id_categoria: i.id_categoria}, {class: 'btn btn-danger btn-default'} %>
               </div>

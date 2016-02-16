@@ -1,4 +1,8 @@
 class ItemController < ApplicationController
+	def lista
+		@itens = Item.all
+	end
+
 	def listaDaCategoria
 		@itens = Item.where('id_categoria = ?', params[:id])
 	end
@@ -15,6 +19,9 @@ class ItemController < ApplicationController
 
 	def edita
 		@item = Item.find(params[:id])
+		@categoria = Categoria.find(@item.id_categoria)
+		@categorias = Categoria.all
+
 	end
 
 	def altera
