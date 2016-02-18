@@ -2,7 +2,7 @@ class CategoriaController < ApplicationController
   before_action :authenticate_usuario!
 
   def index
-    @categorias = Categoria.all
+    @categorias = Categoria.order(:id_categoria)
   end
 
   def novo

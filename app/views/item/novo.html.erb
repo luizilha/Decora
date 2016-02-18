@@ -35,7 +35,7 @@
 
            <div class="fileinput fileinput-new" data-provides="fileinput">
              <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-               <img data-src="holder.js/100%x100%" src="<%= @item.foto.url(:medium) %>">
+               <img data-src="holder.js/100%x100%" src="<%= @item.foto.url(:original) %>">
              </div>
              <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
              <div>
@@ -44,16 +44,25 @@
              </div>
            </div>
 
-            <%= n.hidden_field :id_categoria, value: params[:id] %>            
+            <%= n.hidden_field :id_categoria, value: params[:id] %>
             <h2 class="form-signin-heading">Nome Item</h2>
             <%= n.text_field :nome, class: "form-control" %>
             <h2 class="form-signin-heading">Descrição</h2>
             <%= n.text_area :descricao, rows: 3, class: "form-control" %>
+
             <h2 class="form-signin-heading">Preço</h2>
-            <%= n.text_field :preco, class: "form-control" %>
+            <div class="input-group">
+              <span class="input-group-addon">R$</span>
+              <%= n.text_field :preco, class: "form-control", placeholder: '0000.00', data: {mask: '9999.99'} %>
+              <span class="input-group-addon">.00</span>
+            </div>
             <h2 class="form-signin-heading">Preço de reposição</h2>
-            <%= n.text_field :preco_reposicao, class: "form-control" %>
-            <%= n.submit "Salvar", class: "btn btn-primary btn-block" %>
+            <div class="input-group">
+              <span class="input-group-addon">R$</span>
+                <%= n.text_field :preco_reposicao, class: "form-control", placeholder: '0000.00', data: {mask: '9999.99'} %>
+              <span class="input-group-addon">.00</span>
+            </div>
+            <%= n.submit "Salvar", class: "btn btn-primary btn-block", style: 'margin-top: 20px' %>
           </ul>
         <% end %>
       </div>

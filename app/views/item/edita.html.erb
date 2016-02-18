@@ -33,40 +33,35 @@
          <%= form_for @item, :html => {multipart: true, method: :PUT} ,:url => {:action => :altera} do |n| %>
          <ul class="media-list">
 
-           <div class="fileinput fileinput-new" data-provides="fileinput">
-             <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-               <img data-src="holder.js/100%x100%" src="<%= @item.foto.url(:medium) %>">
+             <div class="fileinput fileinput-new" data-provides="fileinput">
+               <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                 <img data-src="holder.js/100%x100%" src="<%= @item.foto.url(:original) %>">
+               </div>
+               <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+               <div>
+                 <span class="btn btn-default btn-file"><span class="fileinput-new">Selecione um Imagem</span><span class="fileinput-exists">Mudar</span><%= n.file_field :foto %></span>
+                 <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+               </div>
              </div>
-             <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-             <div>
-               <span class="btn btn-default btn-file"><span class="fileinput-new">Selecione um Imagem</span><span class="fileinput-exists">Mudar</span><%= n.file_field :foto %></span>
-               <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-             </div>
-           </div>
-
-            <div class="btn-group">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 <%= @categoria.nome %> <span class="caret"></span>
-              </button>
-
-              <ul class="dropdown-menu">
-                <% @categorias.each do |c| %>
-                  <li><a href="#"><%= c.nome %></a></li>
-                <% end %>
-              </ul>
-            </div>
-
-            <h2 class="form-signin-heading">Nome Item</h2>
-            <%= n.text_field :nome, class: "form-control" %>
-            <h2 class="form-signin-heading">Descrição</h2>
-            <%= n.text_area :descricao, rows: 3, class: "form-control" %>
-            <h2 class="form-signin-heading">Preço</h2>
-            <%= n.text_field :preco, class: "form-control", placeholder: '0000.00', data: {mask: '9999.99'} %>
-            <h2 class="form-signin-heading">Preço de reposição</h2>
-            <%= n.text_field :preco_reposicao, class: "form-control", placeholder: '0000.00', data: {mask: '9999.99'} %>
-
-
-            <%= n.submit "Salvar", class: "btn btn-primary btn-block" %>
+              <h2 class="form-signin-heading">Nome Item</h2>
+              <%= n.text_field :nome, class: "form-control" %>
+              <h2 class="form-signin-heading">Descrição</h2>
+              <%= n.text_area :descricao, rows: 3, class: "form-control" %>
+              <h2 class="form-signin-heading">Preço</h2>
+              <div class="input-group">
+                <span class="input-group-addon">R$</span>
+                <%= n.text_field :preco, class: "form-control", placeholder: '0000.00', data: {mask: '9999.99'} %>
+                <span class="input-group-addon">.00</span>
+              </div>
+              <h2 class="form-signin-heading">Preço de reposição</h2>
+              <div class="input-group">
+                <span class="input-group-addon">R$</span>
+                  <%= n.text_field :preco_reposicao, class: "form-control", placeholder: '0000.00', data: {mask: '9999.99'} %>
+                <span class="input-group-addon">.00</span>
+              </div>
+              <h2 class="form-signin-heading">Categoria</h2>
+              <%= n.collection_select :id_categoria, Categoria.all, :id_categoria, :nome, {prompt: "Seleciona "}, {class: "form-control"} %>
+              <%= n.submit "Salvar", class: "btn btn-primary btn-block", style: 'margin-top: 20px' %>
           </ul>
         <% end %>
       </div>

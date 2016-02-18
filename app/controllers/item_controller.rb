@@ -1,10 +1,11 @@
 class ItemController < ApplicationController
 	def lista
-		@itens = Item.all
+		@itens = Item.order(id_item: :desc)
 	end
 
 	def listaDaCategoria
-		@itens = Item.where('id_categoria = ?', params[:id])
+		@categoria = Categoria.find(params[:id])
+		@itens = Item.where('id_categoria = ?', params[:id]).order(id_item: :desc)
 	end
 
 	def novo
