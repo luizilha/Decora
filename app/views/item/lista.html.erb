@@ -43,7 +43,7 @@
             <div class="thumbnail">
               <%= image_tag i.foto.url(:original), width: 242, height: 200, class: 'center-block'%>
               <div class="caption">
-                <h3><%= i.nome %></h3>
+                <h3><%= i.nome %>  <span class="badge"><%= i.quantidade %></span></h3>
                 <p><%= i.descricao %></p>
                 <%= link_to 'Editar', { controller: 'item', action: 'edita', id: i.id_item}, {class: 'btn btn-default'} %>
                 <%= link_to 'Deletar', { controller: 'item', action: 'deleta', id: i.id_item, id_categoria: i.id_categoria}, {class: 'btn btn-danger btn-default'} %>
