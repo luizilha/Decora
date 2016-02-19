@@ -20,25 +20,26 @@
   </nav>
 </div>
 
-
 <div class="row">
   <div class="container">
-    <div class="col-md-10">
-    </div>
-
+    <div class="col-md-10"></div>
+    <%= link_to 'Adicionar Item', { controller: 'item', action: 'novo'}, class: 'btn btn-primary btn-default'%>
   </div>
 </div>
 
-  <div class="panel panel-default">
+  <div class="panel panel-default" style="margin-top:20px">
     <div class="panel-heading">
       <h3 class="panel-title">Itens da Arcevo</h3>
     </div>
     <div class="panel-body">
       <ul class="media-list">
 
-        <div class="row">
-          <% @itens.each do |i| %>
-          <div class="col-md-4">
+
+          <% @itens.each_with_index do |i, index| %>
+            <% if index == 3; index = 0 %>
+              <div class="row">
+            <% end %>
+          <div class="col-md-3">
             <div class="thumbnail">
               <%= image_tag i.foto.url(:original), width: 242, height: 200, class: 'center-block'%>
               <div class="caption">
@@ -49,8 +50,11 @@
               </div>
             </div>
           </div>
+            <% if index == 3; index = 0 %>
+              </div>
+            <% end %>
           <% end %>
-      </div>
+
     </ul>
     </div>
   <br/>

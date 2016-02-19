@@ -62,6 +62,9 @@
                 <%= n.text_field :preco_reposicao, class: "form-control", placeholder: '0000.00', data: {mask: '9999.99'} %>
               <span class="input-group-addon">.00</span>
             </div>
+            <h2 class="form-signin-heading">Categoria</h2>
+            <%= n.collection_select :id_categoria, Categoria.all, :id_categoria, :nome, {prompt: "Seleciona "} , {class: "form-control"} %>
+
             <%= n.submit "Salvar", class: "btn btn-primary btn-block", style: 'margin-top: 20px' %>
           </ul>
         <% end %>
