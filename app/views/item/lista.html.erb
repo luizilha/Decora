@@ -1,24 +1,4 @@
-<div class="row">
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <ul class="nav navbar-nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cátalogo <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="/">categoria</a></li>
-              <li><%= link_to 'itens', { controller: 'item', action: 'lista'}%></li>
-            </ul>
-          </li>
-          <%= link_to('Sair', destroy_usuario_session_path, :method => :delete, class: 'btn btn-default navbar-btn') %>
-          <li><a href="">Orçamento</a></li>
-          <li><a href="">Agendamento</a></li>
-          <li><a href="">Projetos</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</div>
+<%= render partial: 'layouts/cabecalho' %>
 
 <div class="row">
   <div class="container">

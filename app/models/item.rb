@@ -7,5 +7,6 @@ class Item < ActiveRecord::Base
 	validates_presence_of :foto, message: 'tem que ser preenchido'
 	validates_presence_of :nome, message: 'tem que ser preenchido'
 	validates_presence_of :id_categoria, message: 'tem que ser preenchido'
-
+	validates_presence_of :preco, message: 'tem que ser preenchido'
+	validates_presence_of :preco_reposicao, message: 'tem que ser preenchido'
 end

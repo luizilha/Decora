@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   match 'item/edita/:id' => 'item#edita', via: 'get'
   match 'item/edita/:id' => 'item#altera', via: 'put'
 
+  match 'projetos' => 'projeto#lista', via: 'get'
 end
