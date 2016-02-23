@@ -1,11 +1,11 @@
 class ItemController < ApplicationController
 	def lista
-		@itens = Item.order(id_item: :desc)
+		@itens = Item.order(alteracao: :asc)
 	end
 
 	def listaDaCategoria
 		@categoria = Categoria.find(params[:id])
-		@itens = Item.where('id_categoria = ?', params[:id]).order(id_item: :desc)
+		@itens = Item.where('id_categoria = ?', params[:id]).order(alteracao: :asc)
 	end
 
 	def novo
@@ -14,6 +14,7 @@ class ItemController < ApplicationController
 
 	def cria
 		@item = Item.new params_item
+		@item.alteracao = Time.now
 		@item.save
 	 	redirect_to action: 'listaDaCategoria', id: params_item[:id_categoria]
 	end
@@ -22,11 +23,11 @@ class ItemController < ApplicationController
 		@item = Item.find(params[:id])
 		@categoria = Categoria.find(@item.id_categoria)
 		@categorias = Categoria.all
-
 	end
 
 	def altera
 		@item = Item.find(params[:id])
+		@item.alteracao = Time.now
 		@item.update_attributes params_item
 		redirect_to action: 'listaDaCategoria', id: @item.id_categoria
 	end
