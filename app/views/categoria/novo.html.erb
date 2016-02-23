@@ -19,10 +19,17 @@
     </div>
   </nav>
 </div>
-
-
   <div class="row">
-    <div class="col-md-3"></div>
+    <div class="col-md-3">
+
+      <ul>
+        <% @categoria.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger" role="alert">
+            <%= msg %>
+        </div>
+        <% end %>
+      </ul>
+    </div>
 
     <div class="col-md-6">
       <div class="panel panel-default">
@@ -30,6 +37,8 @@
           <h3 class="panel-title">Nova Categoria</h3>
         </div>
         <div class="panel-body">
+
+
          <%= form_for @categoria, :html => {multipart: true} ,:url => {:action => :cria} do |n| %>
          <ul class="media-list">
 
@@ -43,7 +52,7 @@
                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
              </div>
            </div>
-            
+
             <h2 class="form-signin-heading">Nome Categoria</h2>
             <%= n.text_field :nome, class: "form-control" %>
             <h2 class="form-signin-heading">Descrição</h2>

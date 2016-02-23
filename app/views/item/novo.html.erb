@@ -22,7 +22,14 @@
 
 
 <div class="row">
-    <div class="col-md-3"></div>
+    <div class="col-md-3">
+      <% @item.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger" role="alert">
+            <%= msg %>
+        </div>
+      <% end %>
+
+    </div>
 
     <div class="col-md-6">
       <div class="panel panel-default">

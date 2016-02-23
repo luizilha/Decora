@@ -12,8 +12,11 @@ class CategoriaController < ApplicationController
   def cria
     @categoria = Categoria.new params_categoria
     @categoria.id_usuario = current_usuario.id
-    @categoria.save
-    redirect_to action: 'index'
+    if @categoria.save
+      redirect_to action: 'index'
+    else
+      render action: 'novo'
+    end
   end
 
   def edita
@@ -22,8 +25,11 @@ class CategoriaController < ApplicationController
 
   def altera
     @categoria = Categoria.find(params[:id])
-    @categoria.update_attributes params_categoria
-    redirect_to action: 'index'
+    if @categoria.update_attributes params_categoria
+      redirect_to action: 'index'
+    else
+      render action: 'edita'
+    end
   end
 
   def deleta

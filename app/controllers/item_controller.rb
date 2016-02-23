@@ -15,8 +15,12 @@ class ItemController < ApplicationController
 	def cria
 		@item = Item.new params_item
 		@item.alteracao = Time.now
-		@item.save
-	 	redirect_to action: 'listaDaCategoria', id: params_item[:id_categoria]
+
+		if @item.save
+	 		redirect_to action: 'listaDaCategoria', id: params_item[:id_categoria]
+		else
+			render action: 'novo'
+		end
 	end
 
 	def edita
@@ -28,8 +32,11 @@ class ItemController < ApplicationController
 	def altera
 		@item = Item.find(params[:id])
 		@item.alteracao = Time.now
-		@item.update_attributes params_item
-		redirect_to action: 'listaDaCategoria', id: @item.id_categoria
+		if @item.update_attributes params_item
+			redirect_to action: 'listaDaCategoria', id: @item.id_categoria
+		else
+			render action: 'edita'
+		end
 	end
 
 	def deleta

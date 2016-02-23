@@ -20,4 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  activerecord:
+    attributes:
+      item:
+        id_categoria: 'categoria'
   hello: "Hello world"
