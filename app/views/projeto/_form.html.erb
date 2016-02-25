@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-3">
+    <% @projeto.errors.full_messages.each do |msg| %>
+    <div class="alert alert-danger" role="alert">
+        <%= msg %>
+    </div>
+    <% end %>
+
+  </div>
+
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= (msg) %> Projeto </h3>
+      </div>
+      <div class="panel-body">
+       <%= form_for @projeto, :html => {multipart: true, method: (method)} ,:url => {action: (action)} do |n| %>
+       <ul class="media-list">
+
+
+          <%= n.hidden_field :id_categoria, value: params[:id] %>
+          <h2 class="form-signin-heading">Nome Projeto</h2>
+          <%= n.text_field :nome, class: "form-control" %>
+          <h2 class="form-signin-heading">Descrição</h2>
+          <%= n.text_area :descricao, rows: 3, class: "form-control" %>
+
+          <%= n.submit "Salvar", class: "btn btn-primary btn-block", style: 'margin-top: 20px' %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>

@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   match 'item/edita/:id' => 'item#altera', via: 'put'
 
   match 'projetos' => 'projeto#lista', via: 'get'
+  match 'projeto/novo' => 'projeto#novo', via: 'get'
+  match 'projetos' => 'projeto#cria', via: 'post'
 end
