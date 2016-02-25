@@ -42,6 +42,6 @@ class ProjetoController < ApplicationController
   end
 
   def params_projeto
-		params.require(:projeto).permit(:nome, :descricao)
+		params.require(:projeto).permit(:nome, :descricao, :capa)
 	end
 end

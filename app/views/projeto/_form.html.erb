@@ -8,7 +8,7 @@
 
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title"><%= (msg) %> Projeto </h3>
@@ -16,15 +16,46 @@
       <div class="panel-body">
        <%= form_for @projeto, :html => {multipart: true, method: (method)} ,:url => {action: (action)} do |n| %>
        <ul class="media-list">
+         <div class="fileinput fileinput-new" data-provides="fileinput">
+           <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+             <img data-src="holder.js/100%x100%" src="<%= @projeto.capa.url(:original) %>">
+           </div>
+           <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+           <div>
+             <span class="btn btn-default btn-file"><span class="fileinput-new">Selecione um Imagem</span><span class="fileinput-exists">Mudar</span><%= n.file_field :capa %></span>
+             <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+           </div>
+         </div>
+
+
           <%= n.hidden_field :id_categoria, value: params[:id] %>
           <h2 class="form-signin-heading">Nome Projeto</h2>
           <%= n.text_field :nome, class: "form-control" %>
           <h2 class="form-signin-heading">Descrição</h2>
           <%= n.text_area :descricao, rows: 3, class: "form-control" %>
+
+      <div class="panel panel-default", style= "margin-top: 20px">
+          <div class="panel-heading">
+            <h3 class="panel-title">Selecione os itens </h3>
+          </div>
+        <div class="panel-body">
+
           <% @itens.each do |i| %>
-            <%= check_box_tag 'item[]', i.id_item, @projeto.item.include?(i) %>
-            <%= i.nome %>
+
+            <div class="col-md-3">
+              <div class="thumbnail">
+                <%= image_tag i.foto.url(:original), width: 242, height: 200, class: 'center-block'%>
+                <div class="caption">
+                  <h3><%= i.nome %>  <span class="badge"><%= i.quantidade %></span></h3>
+                  <%= check_box_tag 'item[]', i.id_item, @projeto.item.include?(i) %>
+                </div>
+              </div>
+            </div>
+
           <% end %>
+        </div>
+      </div>
+
           <%= n.submit "Salvar", class: "btn btn-primary btn-block", style: 'margin-top: 20px' %>
         </ul>
       <% end %>

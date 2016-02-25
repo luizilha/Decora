@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223154505) do
+ActiveRecord::Schema.define(version: 20160225183125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,9 +45,13 @@ ActiveRecord::Schema.define(version: 20160223154505) do
   end
 
   create_table "projeto", primary_key: "id_projeto", force: true do |t|
-    t.string  "nome",       limit: 80,                                                         null: false
-    t.text    "descricao",                                                                     null: false
-    t.integer "id_usuario",            default: "nextval('projeto_id_usuario_seq'::regclass)", null: false
+    t.string   "nome",              limit: 80,                                                         null: false
+    t.text     "descricao",                                                                            null: false
+    t.integer  "id_usuario",                   default: "nextval('projeto_id_usuario_seq'::regclass)", null: false
+    t.string   "capa_file_name"
+    t.string   "capa_content_type"
+    t.integer  "capa_file_size"
+    t.datetime "capa_updated_at"
   end
 
   create_table "usuario", force: true do |t|

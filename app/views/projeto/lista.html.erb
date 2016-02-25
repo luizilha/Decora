@@ -20,7 +20,7 @@
         <% @projetos.each do |c| %>
         <li class="media">
           <div class="media-left">
-
+              <%= image_tag c.capa.url(:original), width: 150, height: 150, class: 'center-block'%>
           </div>
           <div class="media-body">
             <div class="col-md-6">
@@ -31,11 +31,8 @@
             </div>
 
             <div class="btn-group" role="group" aria-label="...">
-
-
               <%= link_to 'Deletar', { controller: 'projeto', action: 'deleta', id: c.id_projeto}, {class: 'btn btn-danger btn-default'} %>
               <%= link_to 'Editar', { controller: 'projeto', action: 'edita', id: c.id_projeto }, {class: 'btn btn-warning btn-default'} %>
-
             </div>
           </div>
         </li>
