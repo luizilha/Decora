@@ -20,4 +20,8 @@ Rails.application.routes.draw do
   match 'projetos' => 'projeto#lista', via: 'get'
   match 'projeto/novo' => 'projeto#novo', via: 'get'
   match 'projetos' => 'projeto#cria', via: 'post'
+  match 'projeto/deleta/:id' => 'projeto#deleta', via: 'get'
+  match 'projeto/edita/:id' => 'projeto#edita', via: 'get'
+  match 'projeto/edita/:id' => 'projeto#altera', via: 'put'
+
 end

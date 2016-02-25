@@ -33,21 +33,8 @@
             <div class="btn-group" role="group" aria-label="...">
 
 
-
-<!--
-, "data-toggle" => "modal", "data-target" => ".msg-deleta"
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".msg-deleta">Small modal</button>
-
-            <div class="modal fade msg-deleta" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-              <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                  TESTE
-                </div>
-              </div>
-            </div>
--->
-
+              <%= link_to 'Deletar', { controller: 'projeto', action: 'deleta', id: c.id_projeto}, {class: 'btn btn-danger btn-default'} %>
+              <%= link_to 'Editar', { controller: 'projeto', action: 'edita', id: c.id_projeto }, {class: 'btn btn-warning btn-default'} %>
 
             </div>
           </div>

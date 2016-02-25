@@ -16,14 +16,15 @@
       <div class="panel-body">
        <%= form_for @projeto, :html => {multipart: true, method: (method)} ,:url => {action: (action)} do |n| %>
        <ul class="media-list">
-
-
           <%= n.hidden_field :id_categoria, value: params[:id] %>
           <h2 class="form-signin-heading">Nome Projeto</h2>
           <%= n.text_field :nome, class: "form-control" %>
           <h2 class="form-signin-heading">Descrição</h2>
           <%= n.text_area :descricao, rows: 3, class: "form-control" %>
-
+          <% @itens.each do |i| %>
+            <%= check_box_tag 'item[]', i.id_item, @projeto.item.include?(i) %>
+            <%= i.nome %>
+          <% end %>
           <%= n.submit "Salvar", class: "btn btn-primary btn-block", style: 'margin-top: 20px' %>
         </ul>
       <% end %>
