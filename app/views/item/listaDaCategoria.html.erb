@@ -25,7 +25,7 @@
                   <h3><%= i.nome %>  <span class="badge"><%= i.quantidade %></span></h3>
                   <p><%= i.descricao %></p>
                   <b>Preço - Preço Reposição</b>
-                  <h4>R$ <%= i.preco %> - R$ <%= i.preco_reposicao %></h4>
+                  <h4><%= number_to_currency(i.preco, unit: 'R$', separator: ',', delimiter: '.') %> - <%= number_to_currency(i.preco_reposicao, unit: 'R$', separator: ',', delimiter: '.') %></h4>
                   <%= link_to 'Editar', { controller: 'item', action: 'edita', id: i.id_item}, {class: 'btn btn-default'} %>
                   <%= link_to 'Excluir', { controller: 'item', action: 'deleta', id: i.id_item, id_categoria: i.id_categoria}, {class: 'btn btn-danger btn-default'} %>
                 </div>

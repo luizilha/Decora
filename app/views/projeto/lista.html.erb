@@ -30,7 +30,7 @@
               <h4 class="media-heading"><%= c.descricao %></h4>
             </div>
 
-            <div class="btn-group" role="group" aria-label="...">
+            <div class="btn-group" role="group" aria-label="...">              
               <%= link_to 'Excluir', { controller: 'projeto', action: 'deleta', id: c.id_projeto}, {class: 'btn btn-danger btn-default'} %>
               <%= link_to 'Editar', { controller: 'projeto', action: 'edita', id: c.id_projeto }, {class: 'btn btn-warning btn-default'} %>
             </div>

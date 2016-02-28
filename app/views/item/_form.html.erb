@@ -24,7 +24,7 @@
            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
            <div>
              <span class="btn btn-default btn-file"><span class="fileinput-new">Selecione um Imagem</span><span class="fileinput-exists">Mudar</span><%= n.file_field :foto %></span>
-             <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+             <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Excluir</a>
            </div>
          </div>
 
@@ -37,14 +37,12 @@
           <h2 class="form-signin-heading">Preço</h2>
           <div class="input-group">
             <span class="input-group-addon">R$</span>
-            <%= n.text_field :preco, class: "form-control", placeholder: '0000.00', data: {mask: '9999.99'} %>
-            <span class="input-group-addon">.00</span>
+            <%= n.text_field :preco, class: "form-control", placeholder: '0000.00', id: "money" %>
           </div>
           <h2 class="form-signin-heading">Preço de reposição</h2>
           <div class="input-group">
             <span class="input-group-addon">R$</span>
-              <%= n.text_field :preco_reposicao, class: "form-control", placeholder: '0000.00', data: {mask: '9999.99'} %>
-            <span class="input-group-addon">.00</span>
+              <%= n.text_field :preco_reposicao, class: "form-control", placeholder: '0000.00', id: "money2" %>
           </div>
           <h2 class="form-signin-heading">Quantidade</h2>
           <%= n.number_field :quantidade, class: 'form-control' %>
@@ -57,3 +55,9 @@
     </div>
   </div>
 </div>
+<script>
+  $(function() {
+    $('#money').maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+    $('#money2').maskMoney({allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+  })
+</script>

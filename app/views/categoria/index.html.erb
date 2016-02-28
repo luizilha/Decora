@@ -32,21 +32,29 @@
 
             <div class="btn-group" role="group" aria-label="...">
 
-              <%= link_to 'Excluir', { controller: 'categoria', action: 'deleta', id: c.id_categoria}, {class: 'btn btn-danger btn-default'} %>
+              <%= link_to 'Excluir', { controller: 'categoria', action: 'deleta', id: c.id_categoria}, {class: 'btn btn-danger btn-default', "data-toggle" => "modal", "data-target" => ".fade" + c.id_categoria.to_s} %>
 
-<!--
-, "data-toggle" => "modal", "data-target" => ".msg-deleta"
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".msg-deleta">Small modal</button>
-
-            <div class="modal fade msg-deleta" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-              <div class="modal-dialog modal-sm">
+              <div class="modal fade<%=c.id_categoria%>" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+              <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                  TESTE
-                </div>
-              </div>
-            </div>
--->
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">Tem certeza que deseja excluir a categoria <%= c.nome %>?</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-7">Isso ira apagar todos os itens desta categoria!!</div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" data-target="modal">Certeza!</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
               <%= link_to 'Editar', { controller: 'categoria', action: 'edita', id: c.id_categoria }, {class: 'btn btn-warning btn-default'} %>
 
             </div>

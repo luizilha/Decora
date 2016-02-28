@@ -70,6 +70,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    maskmoney-rails (3.0.2.0)
     mime-types (1.25.1)
     mimemagic (0.3.0)
     minitest (5.4.0)
@@ -153,6 +154,7 @@ DEPENDENCIES
   jasny-bootstrap-rails
   jbuilder (~> 2.0)
   jquery-rails
+  maskmoney-rails
   minitest
   mysql2
   paperclip (~> 4.3)
