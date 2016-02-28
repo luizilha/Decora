@@ -27,7 +27,7 @@
                   <b>Preço - Preço Reposição</b>
                   <h4>R$ <%= i.preco %> - R$ <%= i.preco_reposicao %></h4>
                   <%= link_to 'Editar', { controller: 'item', action: 'edita', id: i.id_item}, {class: 'btn btn-default'} %>
-                  <%= link_to 'Deletar', { controller: 'item', action: 'deleta', id: i.id_item, id_categoria: i.id_categoria}, {class: 'btn btn-danger btn-default'} %>
+                  <%= link_to 'Excluir', { controller: 'item', action: 'deleta', id: i.id_item, id_categoria: i.id_categoria}, {class: 'btn btn-danger btn-default'} %>
                 </div>
               </div>
             </div>

@@ -32,7 +32,7 @@
 
             <div class="btn-group" role="group" aria-label="...">
 
-              <%= link_to 'Deletar', { controller: 'categoria', action: 'deleta', id: c.id_categoria}, {class: 'btn btn-danger btn-default'} %>
+              <%= link_to 'Excluir', { controller: 'categoria', action: 'deleta', id: c.id_categoria}, {class: 'btn btn-danger btn-default'} %>
 
 <!--
 , "data-toggle" => "modal", "data-target" => ".msg-deleta"
@@ -48,8 +48,9 @@
             </div>
 -->
               <%= link_to 'Editar', { controller: 'categoria', action: 'edita', id: c.id_categoria }, {class: 'btn btn-warning btn-default'} %>
-              <%= link_to 'Itens', { controller: 'item', action: 'listaDaCategoria', id: c.id_categoria }, {class: 'btn btn-success btn-default'} %>
+
             </div>
+            <%= link_to 'Itens', { controller: 'item', action: 'listaDaCategoria', id: c.id_categoria }, {class: 'btn btn-success btn-default'} %>
           </div>
         </li>
         <% end %>
