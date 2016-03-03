@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   match 'categoria/deleta/:id' => 'categoria#deleta', via: 'get'
   match 'categoria/edita/:id' => 'categoria#edita', via: 'get'
   match 'categoria/edita/:id' => 'categoria#altera', via: 'put'
-
+  
   match 'itens' => 'item#lista', via: 'get'
   match 'itens/:id' => 'item#listaDaCategoria', via: 'get'
   match 'item/novo/:id' => 'item#novo', via: 'get'

@@ -1,6 +1,10 @@
 class ItemController < ApplicationController
 	def lista
 		@itens = Item.order(alteracao: :asc)
+		respond_to do |format|
+		  format.html
+		  format.json { render json: @itens.as_json(only: [:nome, :descricao]) }
+		end
 	end
 
 	def listaDaCategoria
