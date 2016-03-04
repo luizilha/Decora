@@ -46,7 +46,7 @@ class ItemController < ApplicationController
 	def deleta
 		@item = Item.find(params[:id])
 		@item.destroy
-		redirect_to action: 'listaDaCategoria', id: params[:id_categoria]
+		redirect_to action: 'lista'
 	end
 
 	def params_item

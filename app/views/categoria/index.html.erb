@@ -32,17 +32,16 @@
 
             <div class="btn-group" role="group" aria-label="...">
 
-              <%= link_to 'Excluir', { controller: 'categoria', action: 'deleta', id: c.id_categoria}, {class: 'btn btn-danger btn-default', id: 'myBtn', "data-toggle" => "modal", "data-target" => ".fade" + c.id_categoria.to_s} %>
-
+              <a class="btn btn-danger btn-default" type="button" id="myBtn<%=c.id_categoria%>">Excluir</a>
               <script>
               $(document).ready(function(){
-                  $("#myBtn").click(function(){
-                      $("#myModal").modal();
+                  $("#myBtn<%=c.id_categoria%>").click(function(){
+                      $("#myModal<%=c.id_categoria%>").modal();
                   });
               });
               </script>
 
-              <div class="modal fade<%=c.id_categoria%>" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+              <div class="modal fade" id="myModal<%=c.id_categoria%>" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -56,7 +55,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" data-target="modal">Certeza!</button>
+                    <%= link_to 'Confirmar', { controller: 'categoria', action: 'deleta', id: c.id_categoria}, {class: 'btn btn-danger btn-default'} %>
                   </div>
                 </div><!-- /.modal-content -->
               </div><!-- /.modal-dialog -->

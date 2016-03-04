@@ -27,14 +27,44 @@
                 <p><%= i.descricao %></p>
                 <div class="btn-group" role="group" aria-label="...">
                 <%= link_to 'Editar', { controller: 'item', action: 'edita', id: i.id_item}, {class: 'btn btn-warning btn-default'} %>
-                <%= link_to 'Excluir', { controller: 'item', action: 'deleta', id: i.id_item, id_categoria: i.id_categoria}, {class: 'btn btn-danger btn-default'} %>
+                <a class="btn btn-danger btn-default" type="button" id="myBtn<%=i.id_item%>">Excluir</a>
+                
+                <script>
+                $(document).ready(function(){
+                    $("#myBtn<%=i.id_item%>").click(function(){
+                        $("#myModal<%=i.id_item%>").modal();
+                    });
+                });
+                </script>
+
+                <div class="modal fade" id="myModal<%=i.id_item%>" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="gridSystemModalLabel">Tem certeza que deseja excluir o item <%= i.nome %>?</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-7">O item será apagado permanentemente!</div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                      <%= link_to 'Confirmar', { controller: 'item', action: 'deleta', id: i.id_item, id_categoria: i.id_categoria}, {class: 'btn btn-danger btn-default'} %>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+
+
               </div>
               </div>
             </div>
           </div>
-            <% if index == 3; index = 0 %>
-              </div>
-            <% end %>
+
           <% end %>
 
     </ul>
