@@ -6,6 +6,7 @@ class ProjetoController < ApplicationController
   def novo
     @projeto = Projeto.new
     @itens = Item.all
+    @categorias = Categoria.all
   end
 
   def cria
@@ -23,6 +24,7 @@ class ProjetoController < ApplicationController
   def edita
     @projeto = Projeto.find(params[:id])
     @itens = Item.all
+    @categorias = Categoria.all
   end
 
   def altera

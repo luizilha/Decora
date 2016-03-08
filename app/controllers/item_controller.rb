@@ -1,6 +1,7 @@
 class ItemController < ApplicationController
 	def lista
 		@itens = Item.order(alteracao: :asc)
+		@categorias = Categoria.all.select('nome','id_categoria').as_json
 		respond_to do |format|
 		  format.html
 		  format.json { render json: @itens.as_json(only: [:nome, :descricao]) }
