@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   match 'categoria/deleta/:id' => 'categoria#deleta', via: 'get'
   match 'categoria/edita/:id' => 'categoria#edita', via: 'get'
   match 'categoria/edita/:id' => 'categoria#altera', via: 'put'
-  
+
   match 'itens' => 'item#lista', via: 'get'
   match 'itens/:id' => 'item#listaDaCategoria', via: 'get'
   match 'item/novo/:id' => 'item#novo', via: 'get'
@@ -23,5 +23,5 @@ Rails.application.routes.draw do
   match 'projeto/deleta/:id' => 'projeto#deleta', via: 'get'
   match 'projeto/edita/:id' => 'projeto#edita', via: 'get'
   match 'projeto/edita/:id' => 'projeto#altera', via: 'put'
-
+  match 'projeto/detalhe/:id' => 'projeto#', via: 'get'
 end
