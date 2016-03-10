@@ -26,11 +26,8 @@
                   <h4><%= @categoria.nome %></h4>
                   Preço</br><b><%= number_to_currency(i.preco, unit: 'R$', separator: ',', delimiter: '.') %></b></br>
                   Preço Reposição</br><b><%= number_to_currency(i.preco_reposicao, unit: 'R$', separator: ',', delimiter: '.') %></b>
-                <div class="btn-group" role="group" aria-label="...">
-                  <%= link_to 'Editar', { controller: 'item', action: 'edita', id: i.id_item}, {class: 'btn btn-default btn-warning'} %>
-                  <%= link_to 'Excluir', { controller: 'item', action: 'deleta', id: i.id_item, id_categoria: i.id_categoria}, {class: 'btn btn-danger btn-default'} %>
-                </div>
               </div>
+              <%= link_to 'Editar', { controller: 'item', action: 'edita', id: i.id_item}, {class: 'btn btn-info btn-sm btn-block'} %>
             </div>
             </div>
           <% end %>

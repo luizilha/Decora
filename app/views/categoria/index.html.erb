@@ -9,7 +9,8 @@
 </div>
 
 <div class="row">
-
+  <div class="col-md-1"></div>
+<div class="col-md-10">
   <div class="panel panel-default" style="margin-top: 20px">
     <div class="panel-heading">
       <h3 class="panel-title">Categorias</h3>
@@ -19,26 +20,31 @@
 
         <% @categorias.each do |c| %>
         <li class="media">
+
           <div class="media-left">
-            <%= image_tag c.capa.url(:original), height: 150, width: 150 %>
+            <%= link_to ({ controller: 'item', action: 'listaDaCategoria', id: c.id_categoria }) do %>
+            <%= image_tag c.capa.url(:original), { height: 140, width: 140, class: 'img-rounded' } %>
+            <% end %>
           </div>
           <div class="media-body">
+
             <div class="col-md-6">
               Nome
               <h4 class="media-heading"><%= c.nome %></h4>
               Descrição
               <h4 class="media-heading"><%= c.descricao %></h4>
             </div>
-
-            <div class="btn-group" role="group" aria-label="...">
-              <%= link_to 'Editar', { controller: 'categoria', action: 'edita', id: c.id_categoria }, {class: 'btn btn-warning btn-default'} %>
-            </div>
-            <%= link_to 'Itens', { controller: 'item', action: 'listaDaCategoria', id: c.id_categoria }, {class: 'btn btn-success btn-default'} %>
+            <%= link_to 'Editar', { controller: 'categoria', action: 'edita', id: c.id_categoria }, {class: 'btn btn-default btn-info', style: "margin-top: 5px"} %>
           </div>
         </li>
         <% end %>
       </ul>
     </div>
   </div>
+
+
+
+</div>
+
 
 </div>
