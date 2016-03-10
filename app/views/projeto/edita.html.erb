@@ -1,2 +1,31 @@
 <%= render partial: 'layouts/cabecalho' %>
-<%= render partial: 'form', locals: {msg: 'Editar', method: :PUT, action: :altera} %>
+<%= render partial: 'form', locals: {msg: 'Edita', method: :PUT, action: :altera} %>
+
+
+<script>
+$(document).ready(function(){
+    $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
+});
+</script>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="gridSystemModalLabel">Tem certeza que deseja excluir o projeto <%= @projeto.nome %>?</h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-7">O projeto será apagado permanentemente!</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      <%= link_to 'Confirmar', { controller: 'projeto', action: 'deleta', id: @projeto.id_projeto}, {class: 'btn btn-danger btn-default'} %>
+    </div>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

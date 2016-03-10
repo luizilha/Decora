@@ -85,9 +85,20 @@
           <% end %>
         </div>
       </div>
-
-          <%= n.submit "Salvar", class: "btn btn-primary btn-block", style: 'margin-top: 20px' %>
+          
         </ul>
+
+        <div class="row" >
+          <div class="col-md-10">
+            <% if (msg) == "Edita"%>
+              <a class="btn btn-danger btn-sm" type="button" id="myBtn">Excluir</a>
+            <% end %>
+        </div>
+          <div class="col-md-2">
+            <%= n.submit "Salvar", class: "btn btn-primary" %>
+          </div>
+        </div>
+
       <% end %>
     </div>
   </div>

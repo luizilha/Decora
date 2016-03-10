@@ -9,69 +9,32 @@
 </div>
 
 <div class="row">
-
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
   <div class="panel panel-default" style="margin-top: 20px">
     <div class="panel-heading">
       <h3 class="panel-title">Projetos</h3>
     </div>
     <div class="panel-body">
       <ul class="media-list">
-
         <% @projetos.each do |c| %>
-        <li class="media">
-          <div class="media-left">
-              <%= image_tag c.capa.url(:original), width: 150, height: 150, class: 'center-block'%>
-          </div>
-          <div class="media-body">
-            <div class="col-md-6">
-              Nome
-              <h4 class="media-heading"><%= c.nome %></h4>
-              Descrição
-              <h4 class="media-heading"><%= c.descricao %></h4>
+          <li class="media">
+            <div class="media-left">
+                <%= image_tag c.capa.url(:original), width: 150, height: 150, class: 'center-block img-rounded'%>
             </div>
-
-            <div class="btn-group" role="group" aria-label="...">
-
-
-
-              <a class="btn btn-danger btn-default" type="button" id="myBtn<%=c.id_projeto%>">Excluir</a>
-
-              <script>
-              $(document).ready(function(){
-                  $("#myBtn<%=c.id_projeto%>").click(function(){
-                      $("#myModal<%=c.id_projeto%>").modal();
-                  });
-              });
-              </script>
-
-              <div class="modal fade" id="myModal<%=c.id_projeto%>" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="gridSystemModalLabel">Tem certeza que deseja excluir o projeto <%= c.nome %>?</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="row">
-                      <div class="col-md-7">O projeto será apagado permanentemente!</div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                    <%= link_to 'Confirmar', { controller: 'projeto', action: 'deleta', id: c.id_projeto}, {class: 'btn btn-danger btn-default'} %>
-                  </div>
-                </div><!-- /.modal-content -->
-              </div><!-- /.modal-dialog -->
-              </div><!-- /.modal -->
-
-
-              <%= link_to 'Editar', { controller: 'projeto', action: 'edita', id: c.id_projeto }, {class: 'btn btn-warning btn-default'} %>
+            <div class="media-body">
+              <div class="col-md-6">
+                Nome
+                <h4 class="media-heading"><%= c.nome %></h4>
+                Descrição
+                <h4 class="media-heading"><%= c.descricao %></h4>
+              </div>
+                <%= link_to 'Editar', { controller: 'projeto', action: 'edita', id: c.id_projeto }, {class: 'btn btn-info btn-default'} %>
             </div>
-          </div>
-        </li>
+          </li>
         <% end %>
       </ul>
     </div>
   </div>
-
+</div>
 </div>
