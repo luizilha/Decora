@@ -7,8 +7,11 @@
     <% end %>
 
   </div>
+</div>
 
-  <div class="col-md-12">
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title"><%= (msg) %> Projeto </h3>
@@ -26,68 +29,12 @@
              <span class="btn btn-default btn-file"><span class="fileinput-new">Selecione uma Imagem</span><span class="fileinput-exists">Selecione uma Imagem</span><%= n.file_field :capa %></span>
            </div>
          </div>
-
-
           <%= n.hidden_field :id_categoria, value: params[:id] %>
           <h2 class="form-signin-heading">Nome Projeto</h2>
           <%= n.text_field :nome, class: "form-control" %>
           <h2 class="form-signin-heading">Descrição</h2>
           <%= n.text_area :descricao, rows: 3, class: "form-control" %>
-
-      <div class="panel panel-default", style= "margin-top: 20px">
-          <div class="panel-heading">
-            <h3 class="panel-title">Selecione os itens </h3>
-          </div>
-        <div class="panel-body">
-
-          <% @itens.each do |i| %>
-          <% if @projeto.item.include?(i) and (msg) == 'Editar'%>
-              <div class="col-md-3">
-                <div class="thumbnail">
-                  <%= image_tag i.foto.url(:original), width: 242, height: 200, class: 'center-block'%>
-                  <div class="caption">
-                    <%= check_box_tag 'item[]', i.id_item, @projeto.item.include?(i) %>
-
-
-                      <h3><%= i.nome %>  <span class="badge"><%= i.quantidade  %></span></h3>
-
-                      <% @categorias.each do |c| %>
-                          <% if c['id_categoria'] == i.id_categoria %>
-                              <h4><%= c['nome'] %></h4>
-                          <% end %>
-                      <% end %>
-                      Preço</br><b><%= number_to_currency(i.preco, unit: 'R$', separator: ',', delimiter: '.') %></b></br>
-                      Preço Reposição</br><b><%= number_to_currency(i.preco_reposicao, unit: 'R$', separator: ',', delimiter: '.') %></b>
-                  </div>
-                </div>
-              </div>
-          <% elsif (msg) == 'Novo'%>
-                  <div class="col-md-3">
-                    <div class="thumbnail">
-                      <%= image_tag i.foto.url(:original), width: 242, height: 200, class: 'center-block'%>
-                      <div class="caption">
-                        <%= check_box_tag 'item[]', i.id_item, @projeto.item.include?(i) %>
-
-
-                          <h3><%= i.nome %>  <span class="badge"><%= i.quantidade  %></span></h3>
-
-                          <% @categorias.each do |c| %>
-                              <% if c['id_categoria'] == i.id_categoria %>
-                                  <h4><%= c['nome'] %></h4>
-                              <% end %>
-                          <% end %>
-                          Preço</br><b><%= number_to_currency(i.preco, unit: 'R$', separator: ',', delimiter: '.') %></b></br>
-                          Preço Reposição</br><b><%= number_to_currency(i.preco_reposicao, unit: 'R$', separator: ',', delimiter: '.') %></b>
-                      </div>
-                    </div>
-                  </div>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-          
         </ul>
-
         <div class="row" >
           <div class="col-md-10">
             <% if (msg) == "Edita"%>

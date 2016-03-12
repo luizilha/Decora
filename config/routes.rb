@@ -23,5 +23,7 @@ Rails.application.routes.draw do
   match 'projeto/deleta/:id' => 'projeto#deleta', via: 'get'
   match 'projeto/edita/:id' => 'projeto#edita', via: 'get'
   match 'projeto/edita/:id' => 'projeto#altera', via: 'put'
-  match 'projeto/detalhe/:id' => 'projeto#', via: 'get'
+  match 'projeto/mostra/:id' => 'projeto#mostra', via: 'get'
+  match 'projeto/inclui/:id' => 'projeto#incluiItens', via: 'get'
+  match 'projeto/inclui/:id' => 'projeto#confirmaItens', via: 'put'
 end

@@ -1,0 +1,64 @@
+<%= render partial: 'layouts/cabecalho' %>
+
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+  <div class="panel panel-primary" style="margin-top: 20px">
+    <div class="panel-heading">
+      <h3 class="panel-title">Projeto</h3>
+    </div>
+    <div class="panel-body">
+      <ul class="media-list">
+          <li class="media">
+            <div class="media-left">
+                <%= image_tag @projeto.capa.url(:original), width: 150, height: 150, class: 'center-block img-rounded'%>
+            </div>
+            <div class="media-body">
+              <div class="col-md-6">
+                Nome
+                <h4 class="media-heading"><%= @projeto.nome %></h4>
+                Descrição
+                <h4 class="media-heading"><%= @projeto.descricao %></h4>
+              </div>
+              <%= link_to 'Incluir Itens', { controller: 'projeto', action: 'incluiItens', id: params[:id]}, class: 'btn btn-primary btn-lg'%>
+            </div>
+
+          </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+      <div class="panel panel-default">
+
+          <div class="panel-body">
+            <ul class="media-list">
+              <div class="row">
+                <% @projeto.item.each do |i| %>
+                  <div class="col-md-3">
+                    <div class="thumbnail">
+                      <%= image_tag i.foto.url(:original), class: 'center-block'%>
+                      <div class="caption">
+                        <h3><%= i.nome %>  <span class="badge"><%= i.quantidade  %></span></h3>
+                        <% @categorias.each do |c| %>
+                            <% if c['id_categoria'] == i.id_categoria %>
+                                <h4><%= c['nome'] %></h4>
+                            <% end %>
+                        <% end %>
+                        Preço</br><b><%= number_to_currency(i.preco, unit: 'R$', separator: ',', delimiter: '.') %></b></br>
+                        Preço Reposição</br><b><%= number_to_currency(i.preco_reposicao, unit: 'R$', separator: ',', delimiter: '.') %></b>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

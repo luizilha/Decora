@@ -1,19 +1,37 @@
 class ProjetoController < ApplicationController
+
   def lista
     @projetos = Projeto.all
   end
 
-  def novo
-    @projeto = Projeto.new
+  def mostra
+    @projeto = Projeto.find(params[:id])
+    @categorias = Categoria.all.select('nome','id_categoria').as_json
+  end
+
+  def incluiItens
+    @projeto = Projeto.find(params[:id])
     @itens = Item.all
     @categorias = Categoria.all
   end
 
-  def cria
+  def confirmaItens
     i = Item.find(params[:item].map(&:to_i))
+    @projeto = Projeto.find(params[:id])
+    if @projeto.update_attributes(:item => i)
+      redirect_to action: 'mostra'
+    else
+      render action: 'edita'
+    end
+  end
+
+  def novo
+    @projeto = Projeto.new
+  end
+
+  def cria
     @projeto = Projeto.new params_projeto
     @projeto.id_usuario = current_usuario.id
-    @projeto.item = i
     if @projeto.save
       redirect_to action: 'lista'
     else
@@ -22,15 +40,12 @@ class ProjetoController < ApplicationController
   end
 
   def edita
-    @projeto = Projeto.find(params[:id])
-    @itens = Item.all
-    @categorias = Categoria.all
+    @projeto = Projeto.find(params[:id])    
   end
 
   def altera
-    i = Item.find(params[:item].map(&:to_i))
     @projeto = Projeto.find(params[:id])
-    if @projeto.update_attributes params_projeto and @projeto.update_attributes(:item => i)
+    if @projeto.update_attributes params_projeto
       redirect_to action: 'lista'
     else
       render action: 'edita'

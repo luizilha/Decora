@@ -20,7 +20,9 @@
         <% @projetos.each do |c| %>
           <li class="media">
             <div class="media-left">
-                <%= image_tag c.capa.url(:original), width: 150, height: 150, class: 'center-block img-rounded'%>
+                <%= link_to ({ controller: 'projeto', action: 'mostra', id: c.id_projeto }) do %>
+                  <%= image_tag c.capa.url(:original), width: 150, height: 150, class: 'center-block img-rounded'%>
+                <% end %>
             </div>
             <div class="media-body">
               <div class="col-md-6">
@@ -29,6 +31,7 @@
                 Descrição
                 <h4 class="media-heading"><%= c.descricao %></h4>
               </div>
+
                 <%= link_to 'Editar', { controller: 'projeto', action: 'edita', id: c.id_projeto }, {class: 'btn btn-info btn-default'} %>
             </div>
           </li>
