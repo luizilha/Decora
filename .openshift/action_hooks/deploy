@@ -4,6 +4,10 @@
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
 
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+source ${OPENSHIFT_RUBY_DIR}/lib/ruby_context
+
+
 STORED_ASSETS="${OPENSHIFT_DATA_DIR}/assets"
 LIVE_ASSETS="${OPENSHIFT_REPO_DIR}/public/assets"
 
@@ -23,8 +27,7 @@ fi
 
 
 
-source $OPENSHIFT_CARTRIDGE_SDK_BASH
-source ${OPENSHIFT_RUBY_DIR}/lib/ruby_context
+
 
 set -e
 
