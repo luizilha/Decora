@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
 	belongs_to :categoria
 	has_and_belongs_to_many :projeto, join_table: 'item_projeto',foreign_key: 'id_item',  association_foreign_key: 'id_projeto'
 
-	has_attached_file :foto, styles: { original: "500x500>" }, url: '/assets/:id.:extension', path: ':rails_root/public/assets/:id.:extension'
+	has_attached_file :foto, styles: { original: "500x500>" }, url: '/uploads/:class/:attachment/:id/:style_:filename', path: ':rails_root/public/uploads/:class/:attachment/:id/:style_:filename'
 	validates_attachment_content_type :foto, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 	validates_presence_of :foto, message: 'tem que ser preenchido'
 	validates_presence_of :nome, message: 'tem que ser preenchido'
