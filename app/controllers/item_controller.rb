@@ -1,18 +1,18 @@
 class ItemController < ApplicationController
-	before_action :authenticate_usuario!, :except => [:lista]
+	before_action :authenticate_usuario!, :except => [:listaDaCategoria]
 
 	def lista
 		@itens = Item.order(alteracao: :asc)
 		@categorias = Categoria.all.select('nome','id_categoria').as_json
-		respond_to do |format|
-		  format.html
-		  format.json { render json: @itens.as_json(only: [:nome, :descricao]) }
-		end
 	end
 
 	def listaDaCategoria
 		@categoria = Categoria.find(params[:id])
 		@itens = Item.where('id_categoria = ?', params[:id]).order(alteracao: :asc)
+		respond_to do |format|
+		  format.html
+		  format.json { render json: @itens.as_json(only: [:nome, :descricao], methods: [:foto_url]) }
+		end
 	end
 
 	def novo
