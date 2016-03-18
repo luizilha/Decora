@@ -1,4 +1,5 @@
 class ProjetoController < ApplicationController
+  before_action :authenticate_usuario!, :except => [:lista]
 
   def lista
     @projetos = Projeto.all
@@ -40,7 +41,7 @@ class ProjetoController < ApplicationController
   end
 
   def edita
-    @projeto = Projeto.find(params[:id])    
+    @projeto = Projeto.find(params[:id])
   end
 
   def altera

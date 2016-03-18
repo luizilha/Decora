@@ -1,4 +1,6 @@
 class ItemController < ApplicationController
+	before_action :authenticate_usuario!, :except => [:lista]
+
 	def lista
 		@itens = Item.order(alteracao: :asc)
 		@categorias = Categoria.all.select('nome','id_categoria').as_json

@@ -1,11 +1,11 @@
 class CategoriaController < ApplicationController
-  before_action :authenticate_usuario!
+  before_action :authenticate_usuario!, :except => [:index]
 
   def index
     @categorias = Categoria.order(:id_categoria)
     respond_to do |format|
       format.html
-      format.json {render json: @categorias.as_json(only: [:nome], :methods => [:capa_url])}      
+      format.json {render json: @categorias.as_json(only: [:nome], :methods => [:capa_url])}
     end
   end
 
