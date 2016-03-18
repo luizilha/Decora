@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :usuario
 
   root 'categoria#index'
+  match 'categoria' => 'categoria#index', via: 'get'
   match 'categoria/novo' => 'categoria#novo', via: 'get'
   match '/' => 'categoria#cria', via: 'post'
   match 'categoria/deleta/:id' => 'categoria#deleta', via: 'get'

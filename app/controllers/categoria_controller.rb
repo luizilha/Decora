@@ -3,6 +3,10 @@ class CategoriaController < ApplicationController
 
   def index
     @categorias = Categoria.order(:id_categoria)
+    respond_to do |format|
+      format.html
+      format.json {render json: @categorias.as_json(only: [:nome], :methods => [:capa_url])}      
+    end
   end
 
   def novo
