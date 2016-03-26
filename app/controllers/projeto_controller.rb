@@ -13,17 +13,20 @@ class ProjetoController < ApplicationController
   def incluiItens
     @projeto = Projeto.find(params[:id])
     @itens = Item.all
-    @categorias = Categoria.all
+    @categorias = Categoria.all.select('nome','id_categoria').as_json
+  end
+
+  def retiraItem
+    projeto = Projeto.find(params[:id_projeto])
+    projeto.item.delete(Item.find(params[:id]))
+    redirect_to action: 'mostra', id: params[:id_projeto]
   end
 
   def confirmaItens
     i = Item.find(params[:item].map(&:to_i))
     @projeto = Projeto.find(params[:id])
-    if @projeto.update_attributes(:item => i)
-      redirect_to action: 'mostra'
-    else
-      render action: 'edita'
-    end
+    @projeto.item.concat i
+    redirect_to action: 'mostra'
   end
 
   def novo

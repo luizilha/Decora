@@ -20,11 +20,9 @@
                 Descrição
                 <h4 class="media-heading"><%= @projeto.descricao %></h4>
               </div>
-              <%= link_to 'Incluir Itens', { controller: 'projeto', action: 'incluiItens', id: params[:id]}, class: 'btn btn-primary btn-lg'%>
+              <%= link_to 'Incluir itens', { controller: 'projeto', action: 'incluiItens', id: params[:id]}, class: 'btn btn-primary btn-lg'%>
             </div>
-
           </li>
-
       </ul>
     </div>
   </div>
@@ -52,6 +50,7 @@
                         <% end %>
                         Preço</br><b><%= number_to_currency(i.preco, unit: 'R$', separator: ',', delimiter: '.') %></b></br>
                         Preço Reposição</br><b><%= number_to_currency(i.preco_reposicao, unit: 'R$', separator: ',', delimiter: '.') %></b>
+                        <%= link_to 'Retirar', { controller: 'projeto', action: 'retiraItem', id: i.id_item, id_projeto: @projeto.id_projeto}, {class: 'btn btn-warning btn-sm btn-block'} %>
                       </div>
                     </div>
                   </div>

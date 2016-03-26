@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   match 'projeto/mostra/:id' => 'projeto#mostra', via: 'get'
   match 'projeto/inclui/:id' => 'projeto#incluiItens', via: 'get'
   match 'projeto/inclui/:id' => 'projeto#confirmaItens', via: 'put'
+  match 'projeto/retira/:id/:id_projeto' => 'projeto#retiraItem', via: 'get'
 end

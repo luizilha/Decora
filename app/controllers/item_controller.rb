@@ -2,7 +2,7 @@ class ItemController < ApplicationController
 	before_action :authenticate_usuario!, :except => [:listaDaCategoria]
 
 	def lista
-		@itens = Item.order(alteracao: :asc)
+		@itens = Item.order(:nome)
 		@categorias = Categoria.all.select('nome','id_categoria').as_json
 	end
 
@@ -24,7 +24,7 @@ class ItemController < ApplicationController
 		@item.alteracao = Time.now
 
 		if @item.save
-	 		redirect_to action: 'listaDaCategoria', id: params_item[:id_categoria]
+	 		redirect_to action: 'lista'
 		else
 			render action: 'novo'
 		end

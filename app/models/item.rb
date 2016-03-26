@@ -10,6 +10,7 @@ class Item < ActiveRecord::Base
 	validates_presence_of :id_categoria, message: 'tem que ser preenchido'
 	validates_presence_of :preco, message: 'tem que ser preenchido'
 	validates_presence_of :preco_reposicao, message: 'tem que ser preenchido'
+	validates_length_of :quantidade, minimum: 0, too_short: 'valor invalido deve ser maior que 0'
 
 	def foto_url
 		foto.url(:original)
