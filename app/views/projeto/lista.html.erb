@@ -20,9 +20,7 @@
         <% @projetos.each do |c| %>
           <li class="media">
             <div class="media-left">
-                <%= link_to ({ controller: 'projeto', action: 'mostra', id: c.id_projeto }) do %>
-                  <%= image_tag c.capa.url(:original), width: 150, height: 150, class: 'center-block img-rounded'%>
-                <% end %>
+                <%= image_tag c.capa.url(:original), width: 150, height: 150, class: 'center-block img-rounded'%>
             </div>
             <div class="media-body">
               <div class="col-md-6">
@@ -31,8 +29,11 @@
                 Descrição
                 <h4 class="media-heading"><%= c.descricao %></h4>
               </div>
-
-                <%= link_to 'Editar', { controller: 'projeto', action: 'edita', id: c.id_projeto }, {class: 'btn btn-info btn-default'} %>
+              <div class="btn-group" role="group" aria-label="...">
+                <a class="btn btn-danger btn-default" type="button" id="myBtn<%=c.id_projeto%>">Excluir</a>
+                <%= link_to 'Editar', { controller: 'projeto', action: 'edita', id: c.id_projeto }, {class: 'btn btn-default btn-warning'} %>
+              </div>
+              <%= link_to 'Listar itens',{ controller: 'projeto', action: 'mostra', id: c.id_projeto }, {class: 'btn btn-default btn-success'}%>
             </div>
           </li>
         <% end %>
@@ -41,3 +42,34 @@
   </div>
 </div>
 </div>
+
+
+<% @projetos.each do |c| %>
+<script>
+$(document).ready(function(){
+    $("#myBtn<%=c.id_projeto%>").click(function(){
+        $("#myModal<%=c.id_projeto%>").modal();
+    });
+});
+</script>
+
+<div class="modal fade" id="myModal<%=c.id_projeto%>" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="gridSystemModalLabel">Tem certeza que deseja excluir o projeto <%= c.nome %>?</h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-7">O projeto será apagado permanentemente!</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      <%= link_to 'Confirmar', { controller: 'projeto', action: 'deleta', id: c.id_projeto}, {class: 'btn btn-danger btn-default'} %>
+    </div>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<% end %>

@@ -5,7 +5,6 @@
         <%= msg %>
     </div>
     <% end %>
-
   </div>
 
   <div class="col-md-6">
@@ -27,9 +26,8 @@
            </div>
          </div>
 
-
           <%= n.hidden_field :id_categoria, value: params[:id] %>
-          <h2 class="form-signin-heading">Nome Item</h2>
+          <h2 class="form-signin-heading">Nome</h2>
           <%= n.text_field :nome, class: "form-control" %>
           <h2 class="form-signin-heading">Descrição</h2>
           <%= n.text_area :descricao, rows: 3, class: "form-control" %>
@@ -51,10 +49,8 @@
         </ul>
         <div class="row" >
           <div class="col-md-10">
-            <% if (msg) == "Edita"%>
-              <a class="btn btn-danger btn-sm" type="button" id="myBtn">Excluir</a>
-            <% end %>
-        </div>
+              <%= link_to 'Cancelar', { controller: 'item', action: 'lista' }, {class: 'btn btn-sm btn-default'} %>
+          </div>
           <div class="col-md-2">
             <%= n.submit "Salvar", class: "btn btn-primary" %>
           </div>

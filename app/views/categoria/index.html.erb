@@ -22,9 +22,7 @@
         <li class="media">
 
           <div class="media-left">
-            <%= link_to ({ controller: 'item', action: 'listaDaCategoria', id: c.id_categoria }) do %>
             <%= image_tag c.capa.url(:original), { height: 150, width: 150, class: 'center-block img-rounded' } %>
-            <% end %>
           </div>
           <div class="media-body">
 
@@ -34,17 +32,47 @@
               Descrição
               <h4 class="media-heading"><%= c.descricao %></h4>
             </div>
-            <%= link_to 'Editar', { controller: 'categoria', action: 'edita', id: c.id_categoria }, {class: 'btn btn-default btn-info', style: "margin-top: 5px"} %>
+            <div class="btn-group" role="group" aria-label="...">
+              <a class="btn btn-danger btn-default" type="button" id="myBtn<%=c.id_categoria%>">Excluir</a>
+              <%= link_to 'Editar', { controller: 'categoria', action: 'edita', id: c.id_categoria }, {class: 'btn btn-default btn-warning'} %>
+            </div>
+            <%= link_to 'Listar itens',{ controller: 'item', action: 'listaDaCategoria', id: c.id_categoria }, {class: 'btn btn-default btn-success'}%>
+
           </div>
         </li>
         <% end %>
       </ul>
     </div>
   </div>
-
-
-
+  </div>
 </div>
 
+<% @categorias.each do |c| %>
+<script>
+  $(document).ready(function(){
+      $("#myBtn<%=c.id_categoria%>").click(function(){
+          $("#myModal<%=c.id_categoria%>").modal();
+      });
+  });
+</script>
 
-</div>
+<div class="modal fade" id="myModal<%=c.id_categoria%>" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title" id="gridSystemModalLabel">Tem certeza que deseja excluir a categoria <%= c.nome %>?</h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-7">Isso ira apagar todos os itens desta categoria!!</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      <%= link_to 'Confirmar', { controller: 'categoria', action: 'deleta', id: c.id_categoria}, {class: 'btn btn-danger btn-default'} %>
+    </div>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<% end %>

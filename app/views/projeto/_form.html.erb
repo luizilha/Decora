@@ -36,9 +36,7 @@
         </ul>
         <div class="row" >
           <div class="col-md-10">
-            <% if (msg) == "Edita"%>
-              <a class="btn btn-danger btn-sm" type="button" id="myBtn">Excluir</a>
-            <% end %>
+              <%= link_to 'Cancelar', { controller: 'projeto', action: 'lista' }, {class: 'btn btn-sm btn-default'} %>              
         </div>
           <div class="col-md-2">
             <%= n.submit "Salvar", class: "btn btn-primary" %>
