@@ -5,12 +5,14 @@ class Item < ActiveRecord::Base
 
 	has_attached_file :foto, styles: { original: "500x500>" }, url: '/uploads/:class/:attachment/:id/:style_:filename', path: ':rails_root/public/uploads/:class/:attachment/:id/:style_:filename'
 	validates_attachment_content_type :foto, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+	validates_inclusion_of :quantidade, in: 0..99, message: 'deve ser maior que zero'
+	validates_inclusion_of :preco, in: 1.0..99999.99, message: 'deve ser maior que 1'
+	validates_inclusion_of :preco_reposicao, in: 1.0..99999.99, message: 'deve ser maior que 1'
 	validates_presence_of :foto, message: 'tem que ser preenchido'
 	validates_presence_of :nome, message: 'tem que ser preenchido'
-	validates_presence_of :id_categoria, message: 'tem que ser preenchido'
 	validates_presence_of :preco, message: 'tem que ser preenchido'
 	validates_presence_of :preco_reposicao, message: 'tem que ser preenchido'
-	validates_length_of :quantidade, minimum: 0, too_short: 'valor invalido deve ser maior que 0'
+
 
 	def foto_url
 		foto.url(:original)

@@ -40,7 +40,7 @@ class ItemController < ApplicationController
 		@item = Item.find(params[:id])
 		@item.alteracao = Time.now
 		if @item.update_attributes params_item
-			redirect_to action: 'listaDaCategoria', id: @item.id_categoria
+			redirect_to action: 'lista'
 		else
 			render action: 'edita'
 		end

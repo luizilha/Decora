@@ -1,12 +1,11 @@
 <%= render partial: 'layouts/cabecalho' %>
 
-<div class="row">
-  <div class="col-md-3">
-    <% @projeto.errors.full_messages.each do |msg| %>
-    <div class="alert alert-danger" role="alert">
-        <%= msg %>
-    </div>
-    <% end %>
+<%= form_for @projeto, :html => {multipart: true, method: :PUT} ,:url => {action: :confirmaItens} do |n| %>
+
+<div class="row" >
+  <div class="col-md-11"></div>
+  <div class="col-md-1  ">
+    <%= n.submit "Salvar", class: "btn btn-primary", style: "position: fixed;" %>
   </div>
 </div>
 
@@ -18,9 +17,7 @@
           <h3 class="panel-title"> Incluir itens no projeto <%= @projeto.nome %></h3>
         </div>
         <div class="panel-body">
-         <%= form_for @projeto, :html => {multipart: true, method: :PUT} ,:url => {action: :confirmaItens} do |n| %>
          <ul class="media-list">
-
             <% @itens.each do |i| %>
               <% if !@projeto.item.include?(i) %>
                 <% check_box_tag 'item[]', i.id_item, @projeto.item.include?(i) %>
@@ -43,14 +40,6 @@
               <% end %>
             <% end %>
           </ul>
-
-          <div class="row" >
-            <div class="col-md-10"></div>
-            <div class="col-md-2">
-              <%= n.submit "Salvar", class: "btn btn-primary" %>
-            </div>
-          </div>
-
         <% end %>
       </div>
     </div>
