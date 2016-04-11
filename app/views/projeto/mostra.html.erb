@@ -20,7 +20,9 @@
                 Descrição
                 <h4 class="media-heading"><%= @projeto.descricao %></h4>
               </div>
+              <% if usuario_signed_in? %>
               <%= link_to 'Incluir itens', { controller: 'projeto', action: 'incluiItens', id: params[:id]}, class: 'btn btn-primary btn-lg'%>
+              <% end %>
             </div>
           </li>
       </ul>
@@ -48,9 +50,13 @@
                                 <h4><%= c['nome'] %></h4>
                             <% end %>
                         <% end %>
-                        Preço</br><b><%= number_to_currency(i.preco, unit: 'R$', separator: ',', delimiter: '.') %></b></br>
-                        Preço Reposição</br><b><%= number_to_currency(i.preco_reposicao, unit: 'R$', separator: ',', delimiter: '.') %></b>
-                        <%= link_to 'Retirar', { controller: 'projeto', action: 'retiraItem', id: i.id_item, id_projeto: @projeto.id_projeto}, {class: 'btn btn-warning btn-sm btn-block'} %>
+                        <% if usuario_signed_in? %>
+                          Preço</br><b><%= number_to_currency(i.preco, unit: 'R$', separator: ',', delimiter: '.') %></b></br>
+                          Preço Reposição</br><b><%= number_to_currency(i.preco_reposicao, unit: 'R$', separator: ',', delimiter: '.') %></b>
+                          <%= link_to 'Retirar', { controller: 'projeto', action: 'retiraItem', id: i.id_item, id_projeto: @projeto.id_projeto}, {class: 'btn btn-warning btn-sm btn-block'} %>
+                        <% else %>
+                          <%= i.descricao %>
+                        <% end %>
                       </div>
                     </div>
                   </div>

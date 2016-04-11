@@ -1,5 +1,6 @@
 <%= render partial: 'layouts/cabecalho' %>
 
+<% if usuario_signed_in? %>
 <div class="row">
   <div class="container">
     <div class="col-md-10">
@@ -7,7 +8,7 @@
     <%= link_to 'Adicionar Projeto', { controller: 'projeto', action: 'novo'}, class: 'btn btn-primary btn-default'%>
   </div>
 </div>
-
+<% end %>
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col-md-10">
@@ -29,10 +30,12 @@
                 Descrição
                 <h4 class="media-heading"><%= c.descricao %></h4>
               </div>
+              <% if usuario_signed_in? %>
               <div class="btn-group" role="group" aria-label="...">
                 <a class="btn btn-danger btn-default" type="button" id="myBtn<%=c.id_projeto%>">Excluir</a>
                 <%= link_to 'Editar', { controller: 'projeto', action: 'edita', id: c.id_projeto }, {class: 'btn btn-default btn-warning'} %>
               </div>
+              <% end %>
               <%= link_to 'Listar itens',{ controller: 'projeto', action: 'mostra', id: c.id_projeto }, {class: 'btn btn-default btn-success'}%>
             </div>
           </li>

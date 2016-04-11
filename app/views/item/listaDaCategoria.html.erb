@@ -5,7 +5,9 @@
   <div class="container">
     <div class="col-md-10">
     </div>
-    <%= link_to 'Adicionar Item', { controller: 'item', action: 'novo', id: params[:id]}, class: 'btn btn-primary btn-default'%>
+    <% if usuario_signed_in? %>
+      <%= link_to 'Adicionar Item', { controller: 'item', action: 'novo', id: params[:id]}, class: 'btn btn-primary btn-default'%>
+    <% end %>
   </div>
 </div>
 
@@ -26,13 +28,19 @@
                 <div class="caption">
                   <h3><%= i.nome %>  <span class="badge"><%= i.quantidade  %></span></h3>
                   <h4><%= @categoria.nome %></h4>
-                  Preço</br><b><%= number_to_currency(i.preco, unit: 'R$', separator: ',', delimiter: '.') %></b></br>
-                  Preço Reposição</br><b><%= number_to_currency(i.preco_reposicao, unit: 'R$', separator: ',', delimiter: '.') %></b>
+                  <% if usuario_signed_in? %>
+                    Preço</br><b><%= number_to_currency(i.preco, unit: 'R$', separator: ',', delimiter: '.') %></b></br>
+                    Preço Reposição</br><b><%= number_to_currency(i.preco_reposicao, unit: 'R$', separator: ',', delimiter: '.') %></b>
+                  <% else %>
+                      <%= i.descricao %>
+                  <% end %>
               </div>
-              <div class="btn-group" role="group" aria-label="...">
-                <a class="btn btn-danger btn-sm" type="button" id="myBtn<%=i.id_item%>">Excluir</a>
-                <%= link_to 'Editar', { controller: 'item', action: 'edita', id: i.id_item}, {class: 'btn btn-warning btn-sm'} %>
-              </div>
+              <% if usuario_signed_in? %>
+                <div class="btn-group" role="group" aria-label="...">
+                  <a class="btn btn-danger btn-sm" type="button" id="myBtn<%=i.id_item%>">Excluir</a>
+                  <%= link_to 'Editar', { controller: 'item', action: 'edita', id: i.id_item}, {class: 'btn btn-warning btn-sm'} %>
+                </div>
+              <% end %>
             </div>
             </div>
           <% end %>

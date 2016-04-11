@@ -2,11 +2,16 @@ class CategoriaController < ApplicationController
   before_action :authenticate_usuario!, :except => [:index]
 
   def index
+    @msg = params[:msg]
     @categorias = Categoria.order(:id_categoria)
-    respond_to do |format|
-      format.html
-      format.json {render json: @categorias.as_json(only: [:nome, :id_categoria, :descricao], :methods => [:capa_url])}
-    end
+      respond_to do |format|
+        format.html do
+          if !usuario_signed_in?
+            redirect_to '/usuario/login'
+          end
+        end
+        format.json {render json: @categorias.as_json(only: [:nome, :id_categoria, :descricao], :methods => [:capa_url])}
+      end
   end
 
   def novo
@@ -38,8 +43,13 @@ class CategoriaController < ApplicationController
 
   def deleta
     @categoria = Categoria.find(params[:id])
-    @categoria.destroy
-    redirect_to action: 'index'
+    if @categoria.item.size == 0
+      @categoria.destroy
+      redirect_to action: 'index'
+    else
+      redirect_to action: 'index', msg: 'erro'
+    end
+
   end
 
   def params_categoria

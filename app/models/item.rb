@@ -13,7 +13,6 @@ class Item < ActiveRecord::Base
 	validates_presence_of :preco, message: 'tem que ser preenchido'
 	validates_presence_of :preco_reposicao, message: 'tem que ser preenchido'
 
-
 	def foto_url
 		foto.url(:original)
 	end

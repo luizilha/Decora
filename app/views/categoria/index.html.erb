@@ -1,12 +1,26 @@
 <%= render partial: 'layouts/cabecalho' %>
 
+<% if usuario_signed_in? %>
 <div class="row">
   <div class="container">
-    <div class="col-md-10">
-    </div>
+    <div class="col-md-10"></div>
     <%= link_to 'Adicionar Categoria', { controller: 'categoria', action: 'novo'}, class: 'btn btn-primary btn-default'%>
   </div>
 </div>
+<% end %>
+
+<% if @msg != nil %>
+<div class="row">
+  <div class="col-md-3">
+
+  </div>
+  <div class="col-md-6">
+    <div class="alert alert-danger" role="alert">
+      Categoria não pode ser deletada por conter itens!
+    </div>
+  </div>
+</div>
+<% end %>
 
 <div class="row">
   <div class="col-md-1"></div>
@@ -19,10 +33,6 @@
       <ul class="media-list">
 
         <% @categorias.each do |c| %>
-        <% if c.id_categoria == 25
-            next
-         end %>
-
         <li class="media">
 
           <div class="media-left">
@@ -36,10 +46,12 @@
               Descrição
               <h4 class="media-heading"><%= c.descricao %></h4>
             </div>
+            <% if usuario_signed_in? %>
             <div class="btn-group" role="group" aria-label="...">
               <a class="btn btn-danger btn-default" type="button" id="myBtn<%=c.id_categoria%>">Excluir</a>
               <%= link_to 'Editar', { controller: 'categoria', action: 'edita', id: c.id_categoria }, {class: 'btn btn-default btn-warning'} %>
             </div>
+            <% end %>
             <%= link_to 'Listar itens',{ controller: 'item', action: 'listaDaCategoria', id: c.id_categoria }, {class: 'btn btn-default btn-success'}%>
 
           </div>
@@ -69,7 +81,7 @@
     </div>
     <div class="modal-body">
       <div class="row">
-        <div class="col-md-7">Isso ira apagar todos os itens desta categoria!!</div>
+        <div class="col-md-7">Isto não pode ser feito se tiver itens em <%= c.nome %></div>
       </div>
     </div>
     <div class="modal-footer">

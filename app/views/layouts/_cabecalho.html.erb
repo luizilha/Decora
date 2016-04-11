@@ -1,20 +1,31 @@
+
 <div class="row">
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
         <ul class="nav navbar-nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cátalogo <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="/">categoria</a></li>
-              <li><%= link_to 'itens', { controller: 'item', action: 'lista'}%></li>
-            </ul>
-          </li>
-          <li><a href="">Orçamento</a></li>
-          <li><a href="">Agendamento</a></li>
-          <li><a href="/projetos">Projetos</a></li>
+          <% if usuario_signed_in? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cátalogo <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/">categoria</a></li>
+                <li><%= link_to 'itens', { controller: 'item', action: 'lista'}%></li>
+              </ul>
+            </li>
+            <li><a href="">Orçamento</a></li>
+            <li><a href="">Agendamento</a></li>
+            <li><a href="/projetos">Projetos</a></li>
+          <% else %>
+                <li><a href="/">Categorias</a></li>
+                <li><a href="/projetos">Projetos</a></li>
+          <% end %>
             <ul class="navbar-right" >
-              <%= link_to('Sair', destroy_usuario_session_path, :method => :delete, class: 'btn btn-default navbar-btn navbar-right') %>              
+              <% if usuario_signed_in? %>
+                <%= link_to('Sair', destroy_usuario_session_path, :method => :delete, class: 'btn btn-default navbar-btn navbar-right') %>
+
+              <% else %>
+                <%= link_to('Entrar', new_usuario_session_path, class: 'btn btn-default navbar-btn navbar-right') %>
+              <% end %>
             </ul>
 
         </ul>
