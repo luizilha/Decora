@@ -19,8 +19,7 @@ class CategoriaController < ApplicationController
   end
 
   def cria
-    @categoria = Categoria.new params_categoria
-    @categoria.id_usuario = current_usuario.id
+    @categoria = Categoria.new params_categoria    
     if @categoria.save
       redirect_to action: 'index'
     else

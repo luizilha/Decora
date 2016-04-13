@@ -1,7 +1,7 @@
 class Categoria < ActiveRecord::Base
 	self.table_name = 'categoria'
 	self.primary_key = 'id_categoria'
-	belongs_to :usuario
+
 
 	has_many :item, foreign_key: 'id_categoria'
 	#Validacoes
