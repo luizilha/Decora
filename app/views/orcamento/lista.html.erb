@@ -1,0 +1,28 @@
+<%= render partial: 'layouts/cabecalho' %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Orçamentos Feitos</div>
+  <table class="table">
+    <thead>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Inicio da Festa</th>
+      <th>Término da Festa</th>
+      <th>Data de Pedido</th>
+      <th>Opções</th>
+    </thead>
+
+    <tbody>
+      <% for o in @orcamentos %>
+        <tr>
+          <td><%= Usuario.find(o.id_usuario).nome %></td>
+          <td><%= Usuario.find(o.id_usuario).email %></td>
+          <td><%= o.data_evento.strftime('%d/%m/%Y %H:%M') %></td>
+          <td><%= o.data_val.strftime('%d/%m/%Y %H:%M') %></td>
+          <td><%= o.data_cri.strftime('%d/%m/%Y %H:%M') %></td>
+          <td><%= link_to 'Mostrar', { controller: 'orcamento', action: 'mostrar', id: o.id_orcamento}, {class: 'btn btn-success btn-sm'} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,33 @@
+<%= render partial: 'layouts/cabecalho' %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Itens Pedidos
+
+  </div>
+  <div class="panel-body">
+    <ul class="media-list">
+
+<% for i in @projeto.item %>
+      <li class="media">
+        <div class="media-left">
+          <a href="#">
+            <%= image_tag i.foto.url(:original), width: 90, class: 'center-block'%>
+          </a>
+        </div>
+        <div class="media-body">
+          <div class="col-md-6">
+            <h4 class="media-heading"><%= i.nome %></h4>
+            <%= i.descricao %><br/>
+            <span class="badge"><%= i.quantidade %></span> itens
+          </div>
+          <div class="col-md-3">
+            <div class="input-group">
+              <i><h3 class="media-heading"><%= number_to_currency(i.preco, unit: 'R$', separator: ',', delimiter: '.') %></h3></i>
+            </div>
+          </div>
+        </div>
+      </li>
+<% end %>
+    </ul>
+  </div>
+</div>
