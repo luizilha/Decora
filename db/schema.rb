@@ -11,19 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225183125) do
+ActiveRecord::Schema.define(version: 20160428014254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categoria", primary_key: "id_categoria", force: true do |t|
-    t.string   "nome",              limit: 80,                                                           null: false
-    t.text     "descricao",                                                                              null: false
+    t.string   "nome",              limit: 80, null: false
+    t.text     "descricao",                    null: false
     t.string   "capa_file_name"
     t.string   "capa_content_type"
     t.integer  "capa_file_size"
     t.datetime "capa_updated_at"
-    t.integer  "id_usuario",                   default: "nextval('categoria_id_usuario_seq'::regclass)", null: false
   end
 
   create_table "item", primary_key: "id_item", force: true do |t|
@@ -42,6 +41,15 @@ ActiveRecord::Schema.define(version: 20160225183125) do
 
   create_table "item_projeto", primary_key: "id_item", force: true do |t|
     t.integer "id_projeto", default: "nextval('item_projeto_id_projeto_seq'::regclass)", null: false
+  end
+
+  create_table "orcamento", primary_key: "id_orcamento", force: true do |t|
+    t.datetime "data_cri",                                                              null: false
+    t.datetime "data_val",                                                              null: false
+    t.float    "valor_total",                                                           null: false
+    t.datetime "data_evento",                                                           null: false
+    t.integer  "id_projeto",  default: "nextval('orcamento_id_projeto_seq'::regclass)", null: false
+    t.integer  "id_usuario",  default: "nextval('orcamento_id_usuario_seq'::regclass)", null: false
   end
 
   create_table "projeto", primary_key: "id_projeto", force: true do |t|
