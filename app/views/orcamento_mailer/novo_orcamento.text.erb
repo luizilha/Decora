@@ -1,0 +1,10 @@
+Olá a seguir está o orçamento dos itens da decorazon
+
+<%= @usuario.nome %>
+
+<% for i in @projeto.item %>
+  <%= i.nome %>
+  <%= i.descricao %>
+  <%= i.quantidade %> itens
+  <%= number_to_currency(i.preco, unit: 'R$', separator: ',', delimiter: '.') %>
+<% end %>
