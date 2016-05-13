@@ -1,5 +1,5 @@
 class ProjetoController < ApplicationController
-  before_action :authenticate_usuario!, :except => [:lista]
+  before_action :authenticate_usuario!, :except => [:lista, :mostra]
 
   def lista
     @projetos = Projeto.all
@@ -13,7 +13,11 @@ class ProjetoController < ApplicationController
     @projeto = Projeto.find(params[:id])
     @categorias = Categoria.all.select('nome','id_categoria').as_json
     respond_to do |format|
-      format.html
+      format.html do
+        if !usuario_signed_in?
+          redirect_to '/usuario/login'
+        end
+      end
       format.json { render json: @projeto.as_json(only: [:nome, :descricao], methods: [:capa_url, :item]) }
     end
   end
