@@ -7,6 +7,7 @@ class OrcamentoController < ApplicationController
   def mostrar
     orcamento = Orcamento.find(params[:id])
     @projeto = Projeto.find(orcamento.id_projeto)
+    OrcamentoMailer.novo_orcamento(orcamento).deliver
   end
 
 end
