@@ -3,11 +3,19 @@ class ProjetoController < ApplicationController
 
   def lista
     @projetos = Projeto.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @projetos.as_json(only: [:id_projeto, :nome, :descricao], methods: [:capa_url]) }
+    end
   end
 
   def mostra
     @projeto = Projeto.find(params[:id])
     @categorias = Categoria.all.select('nome','id_categoria').as_json
+    respond_to do |format|
+      format.html
+      format.json { render json: @projeto.as_json(only: [:nome, :descricao], methods: [:capa_url, :item]) }
+    end
   end
 
   def incluiItens

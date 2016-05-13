@@ -7,4 +7,8 @@ class Projeto < ActiveRecord::Base
   has_attached_file :capa, styles: { original: "500x500>" }, url: '/uploads/:class/:attachment/:id/:style_:filename', path: ':rails_root/public/uploads/:class/:attachment/:id/:style_:filename'
   validates_attachment_content_type :capa, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"], message: 'Arquivo deve ser imagem!'
   validates_presence_of :nome, message: 'deve ser preenchido'
+
+  def capa_url
+    capa.url(:original)
+  end
 end
