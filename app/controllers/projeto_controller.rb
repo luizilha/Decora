@@ -18,7 +18,7 @@ class ProjetoController < ApplicationController
           redirect_to '/usuario/login'
         end
       end
-      format.json { render json: @projeto.as_json(only: [:nome, :descricao], methods: [:capa_url, :item]) }
+      format.json { render json: @projeto.as_json(only: [:nome, :descricao], methods: [:capa_url, :itens_json]) }
     end
   end
 

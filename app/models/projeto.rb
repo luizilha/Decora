@@ -11,4 +11,8 @@ class Projeto < ActiveRecord::Base
   def capa_url
     capa.url(:original)
   end
+
+  def itens_json
+    self.item.as_json(only: [:nome, :descricao], methods: [:foto_url])
+  end
 end
