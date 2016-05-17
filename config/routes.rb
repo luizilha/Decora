@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :usuario, path_names: {sign_in: 'login'}
+  devise_for :usuario, path_names: {sign_in: 'login', sign_up: 'novo'}, controllers: {sessions: 'usuario/sessions', registrations: 'usuario/registrations'}
 
   root 'categoria#index'
   match 'categorias/:msg' => 'categoria#index', via: 'get'
