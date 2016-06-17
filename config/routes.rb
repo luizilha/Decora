@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   devise_for :usuario, path_names: {sign_in: 'login', sign_up: 'novo'}, controllers: {sessions: 'usuario/sessions', registrations: 'usuario/registrations'}
 
   root 'categoria#index'
-  match 'categorias/:msg' => 'categoria#index', via: 'get'
-  match 'categorias' => 'categoria#index', via: 'get'
-  match 'categoria/novo' => 'categoria#novo', via: 'get'
-  match '/' => 'categoria#cria', via: 'post'
+  get 'categorias/:msg' => 'categoria#index'
+  get 'categorias' => 'categoria#index'
+  get 'categoria/novo' => 'categoria#novo'
+  post '/' => 'categoria#cria'
   match 'categoria/deleta/:id' => 'categoria#deleta', via: 'get'
   match 'categoria/edita/:id' => 'categoria#edita', via: 'get'
   match 'categoria/edita/:id' => 'categoria#altera', via: 'put'
